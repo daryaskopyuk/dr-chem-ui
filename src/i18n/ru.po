@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals = 3; plural = (n % 10 == 1 && n % 100 != 11 ? 0 : n "
+"% 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+"Language: ru\n"
+"mime-version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/no-match/NoMatch.tsx:15
+msgid "404 Not Found"
+msgstr "404 Не найдено"
+
+#: src/components/no-match/NoMatch.tsx:17
+msgid "Sorry, but we can't display the page you requested."
+msgstr "Извините, но мы не можем отобразить запрашиваемую страницу."
+
+#: src/components/no-match/NoMatch.tsx:24
+msgid "Go to Homepage"
+msgstr "Перейти на Домашнюю страницу"
+
+#: src/components/home/Home.tsx:14
+msgid "CRA DataRobot Template"
+msgstr "CRA DataRobot Шаблон"
+
+#: src/components/home/Home.tsx:22
+msgid "Our repo on GitHub"
+msgstr "Наш репозиторий на GitHub"

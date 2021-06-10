@@ -1,0 +1,32 @@
+.no-match-page {
+  background-color: var(--page-background-color);
+  color: var(--ds-white);
+  padding-top: calc(var(--ds-spacing-10) * 2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-match-page .power-outage-image {
+  width: 1199px;
+}
+
+.no-match-page .no-match-page-texts {
+  text-align: center;
+}
+
+.no-match-page .error-title {
+  margin-top: var(--ds-spacing-10);
+  margin-bottom: 0;
+}
+
+.no-match-page .error-description {
+  margin-top: var(--ds-spacing-05);
+  margin-bottom: 0;
+}
+
+.no-match-page .error-button {
+  margin-top: var(--ds-spacing-06);
+  text-decoration: none;
+}
