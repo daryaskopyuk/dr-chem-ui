@@ -1,6 +1,6 @@
 include:
   - project: solutions-platform2/gitlab-ci-templates
-    ref: add-e2e-step
+    ref: master
     file: /templates/solutions-auto-devops.yml
 
 e2e test:
