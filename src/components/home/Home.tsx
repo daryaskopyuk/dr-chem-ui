@@ -31,7 +31,7 @@ const Home: FunctionComponent = () => {
           className="margin-bottom-5"
           test-id="app-logo"
         />
-        <h1 className="page-header app-heading">{t`CRA DataRobot Template`}</h1>
+        <h1 className="page-header app-heading">{t`CRA DataRobot Template integrated with Gitlab`}</h1>
         <Tabs
           options={tabs}
           onSelect={onTabChange}
