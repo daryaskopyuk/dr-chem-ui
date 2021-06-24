@@ -2,6 +2,7 @@
 
 export const ROUTES = {
   HOME: '/',
+  SIGN_IN: '/auth/sign-in',
   PLACEHOLDER_USERS: '/placeholder-users',
 };
 
