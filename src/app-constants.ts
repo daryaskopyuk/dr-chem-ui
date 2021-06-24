@@ -2,6 +2,7 @@
 
 export const ROUTES = {
   HOME: '/',
+  PLACEHOLDER_USERS: '/placeholder-users',
 };
 
 export const API_ERROR_CODES = {
