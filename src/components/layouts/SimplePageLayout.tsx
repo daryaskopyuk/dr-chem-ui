@@ -8,15 +8,13 @@ type PropsType = {
 };
 
 const SimplePageLayout: FunctionComponent<PropsType> = ({
-  children
+  children,
 }: PropsType) => (
   <div className="simple-page-layout">
     <div className="header-wrapper">
-        <Header />
+      <Header />
     </div>
-    <div className="main-content-wrapper">
-        {children}
-    </div>
+    <div className="main-content-wrapper">{children}</div>
   </div>
 );
 

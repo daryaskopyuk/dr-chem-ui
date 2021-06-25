@@ -7,6 +7,8 @@ import { ROUTES } from 'app-constants';
 import { setLocalstorage } from 'utils/localStore';
 import { useSignInMutation } from 'services/appApi';
 
+import SimplePageLayout from 'components/layouts/SimplePageLayout';
+
 import './Auth.css';
 
 const SignIn: FunctionComponent = () => {
@@ -43,36 +45,38 @@ const SignIn: FunctionComponent = () => {
   };
 
   return (
-    <div className="auth">
-      <header className="auth-header">
-        <h1 className="page-header app-heading">{t`Sign In`}</h1>
-        <form>
-          <label htmlFor="email">
-            Email:
-            <input
-              name="email"
-              type="email"
-              value={email}
-              onChange={({ target: { value } }) => setEmail(value)}
-            />
-          </label>
-          <br />
-          <label htmlFor="password">
-            Password:
-            <input
-              name="password"
-              type="password"
-              value={password}
-              onChange={({ target: { value } }) => setPassword(value)}
-            />
-          </label>
-          <br />
-          <button type="button" disabled={isLoading} onClick={signIn}>
-            Sign In
-          </button>
-        </form>
-      </header>
-    </div>
+    <SimplePageLayout>
+      <div className="auth">
+        <header className="auth-header">
+          <h1 className="page-header app-heading">{t`Sign In`}</h1>
+          <form>
+            <label htmlFor="email">
+              Email:
+              <input
+                name="email"
+                type="email"
+                value={email}
+                onChange={({ target: { value } }) => setEmail(value)}
+              />
+            </label>
+            <br />
+            <label htmlFor="password">
+              Password:
+              <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={({ target: { value } }) => setPassword(value)}
+              />
+            </label>
+            <br />
+            <button type="button" disabled={isLoading} onClick={signIn}>
+              Sign In
+            </button>
+          </form>
+        </header>
+      </div>
+    </SimplePageLayout>
   );
 };
 
