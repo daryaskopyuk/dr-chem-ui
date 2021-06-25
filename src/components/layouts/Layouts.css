@@ -1,0 +1,19 @@
+.simple-page-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: var(--page-background-color);
+  color: var(--ds-white);
+}
+
+.simple-page-layout .header-wrapper {
+    height: 50px;
+    padding: 0 var(--ds-spacing-05);
+}
+
+.simple-page-layout .main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--ds-spacing-05);
+}
