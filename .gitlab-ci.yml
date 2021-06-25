@@ -1,6 +1,6 @@
 include:
   - project: solutions-platform2/gitlab-ci-templates
-    ref: master
+    ref: db8faa4692838b812575fdf0b90512bea6b920ca
     file: /templates/solutions-auto-devops.yml
 
 e2e test:
