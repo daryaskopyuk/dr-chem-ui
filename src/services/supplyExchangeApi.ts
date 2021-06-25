@@ -56,7 +56,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       // retry the initial query
       result = await baseQuery(args, api, extraOptions);
     } else {
-      console.log('Logged out');
+      // console.log('Logged out');
       // api.dispatch(loggedOut());
     }
   }

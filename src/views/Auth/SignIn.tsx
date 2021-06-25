@@ -20,7 +20,7 @@ const SignIn: FunctionComponent = () => {
   const signIn = async () => {
     try {
       const {
-        user,
+        // user,
         tokens: { access, refresh },
       } = await signInMutation({
         email,
@@ -28,17 +28,17 @@ const SignIn: FunctionComponent = () => {
       }).unwrap();
       setLocalstorage('accessToken', access);
       setLocalstorage('refreshToken', refresh);
-      console.log({ user });
+      // console.log({ user });
       // dispatch(setCredentials(user));
       push(ROUTES.CURRENT_USER);
     } catch (err) {
-      console.log('toast', {
-        status: 'error',
-        title: 'Error',
-        description: 'Oh no, there was an error!',
-        isClosable: true,
-      });
-      console.log(err);
+      // console.log('toast', {
+      //   status: 'error',
+      //   title: 'Error',
+      //   description: 'Oh no, there was an error!',
+      //   isClosable: true,
+      // });
+      // console.log(err);
     }
   };
 
