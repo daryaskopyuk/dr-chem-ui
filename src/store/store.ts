@@ -6,7 +6,7 @@ import { supplyExchangeApi } from 'services/supplyExchangeApi';
 
 const store = configureStore({
   reducer: {
-    // Add the generated rtk-query reducer as a specific top-level slice
+    // Add the generated rtk-query reducer(s) as a specific top-level slice
     [placeholderApi.reducerPath]: placeholderApi.reducer,
     [supplyExchangeApi.reducerPath]: supplyExchangeApi.reducer,
   },

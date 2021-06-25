@@ -12,7 +12,7 @@ import User from 'interfaces/user';
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_SE_API_URL,
   prepareHeaders: (headers) => {
-    const accessToken = getLocalstorage('accessToken') || 'dummyAccessToken';
+    const accessToken = getLocalstorage('accessToken');
     // If we have a token set in local storage, pass it to server.
     if (accessToken) {
       headers.set('authorization', `Bearer ${accessToken}`);
@@ -34,7 +34,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
   if (result.error && result.error.status === 401) {
     // try to get a new token
-    const refreshToken = getLocalstorage('refreshToken') || 'dummyRefreshToken';
+    const refreshToken = getLocalstorage('refreshToken');
     const refreshResult = await baseQuery(
       {
         url: '/token/refresh',

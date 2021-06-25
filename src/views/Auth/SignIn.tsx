@@ -15,8 +15,8 @@ const SignIn: FunctionComponent = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  // TODO: Move this to separate useAuth? hook
   const [signInMutation, { isLoading }] = useSignInMutation();
-
   const signIn = async () => {
     try {
       const {
