@@ -1,6 +1,9 @@
+variables:
+  SP_TOOLS_IMAGE: gitlab-registry.solutions.drdev.io/solutions-platform2/gitlab-ci-templates/sevikkk-sp-422-better-report-from-trivy:8b862913b1dea9c111b00bdd0392dbc417949773
+
 include:
   - project: solutions-platform2/gitlab-ci-templates
-    ref: master
+    ref: 8b862913b1dea9c111b00bdd0392dbc417949773
     file: /templates/solutions-auto-devops.yml
 
 e2e test:

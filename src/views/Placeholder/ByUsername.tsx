@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from 'react';
 
-import { useGetUsersByUsernameQuery } from '../../services/placeholderApi/users';
+import { useGetUsersByUsernameQuery } from 'services/externalApi';
 
 const ById: FunctionComponent = () => {
   const [username] = useState<string>('Delphine');

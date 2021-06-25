@@ -3,6 +3,7 @@
 export const ROUTES = {
   HOME: '/',
   SIGN_IN: '/auth/sign-in',
+  CURRENT_USER: '/auth/current-user',
   PLACEHOLDER_USERS: '/placeholder-users',
 };
 

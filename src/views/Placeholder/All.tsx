@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 
-import { useGetUsersQuery } from '../../services/placeholderApi/users';
+import { useGetUsersQuery } from 'services/externalApi';
 
 const All: FunctionComponent = () => {
   // Using a query hook automatically fetches data and returns query values
