@@ -2,7 +2,12 @@
 @import '~@datarobot/design-system/styles/main.css';
 @import './fontface.css';
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   font-family: Roboto, Helvetica, Arial, sans-serif;;
   -webkit-font-smoothing: antialiased;
@@ -12,4 +17,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  height: 100%;
 }

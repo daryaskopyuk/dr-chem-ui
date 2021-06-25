@@ -1,14 +1,14 @@
 .home {
-  background-color: var(--page-background-color);
-  color: var(--ds-white);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
 }
 
 .home-header {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .home-heading {

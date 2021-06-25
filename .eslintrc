@@ -43,7 +43,6 @@
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
-    "operator-linebreak": ["error", "after"],
     "import/prefer-default-export": "off",
     "testing-library/no-container": "off",
     "testing-library/no-node-access": "off",

@@ -1,11 +1,9 @@
 .no-match-page {
-  background-color: var(--page-background-color);
-  color: var(--ds-white);
-  padding-top: calc(var(--ds-spacing-10) * 2);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
+  padding-top: calc(var(--ds-spacing-10) * 2);
 }
 
 .no-match-page .power-outage-image {
