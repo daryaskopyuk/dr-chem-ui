@@ -1,17 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { setupListeners } from '@reduxjs/toolkit/query/react';
-import { placeholderUsersApi } from 'services/placeholderApi/users';
+import { externalApi } from 'services/externalApi';
+import { appApi } from 'services/appApi';
 
 const store = configureStore({
   reducer: {
-    // Add the generated reducer as a specific top-level slice
-    [placeholderUsersApi.reducerPath]: placeholderUsersApi.reducer,
+    // Add the generated rtk-query reducer(s) as a specific top-level slice
+    [externalApi.reducerPath]: externalApi.reducer,
+    [appApi.reducerPath]: appApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(placeholderUsersApi.middleware),
+    getDefaultMiddleware()
+      .concat(externalApi.middleware)
+      .concat(appApi.middleware),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
