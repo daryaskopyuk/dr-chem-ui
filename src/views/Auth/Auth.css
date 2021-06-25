@@ -1,0 +1,11 @@
+.auth {
+  background-color: var(--page-background-color);
+  color: var(--ds-white);
+}
+
+.auth-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

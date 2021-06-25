@@ -2,20 +2,20 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { PlaceholderUser } from 'interfaces/placeholder';
 
 // Define a service using a base URL and expected endpoints
-export const placeholderUsersApi = createApi({
-  reducerPath: 'placeholderUsersApi',
+export const placeholderApi = createApi({
+  reducerPath: 'placeholderApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://jsonplaceholder.typicode.com/',
+    baseUrl: 'https://jsonplaceholder.typicode.com',
   }),
   endpoints: (builder) => ({
     getUsers: builder.query<PlaceholderUser, void>({
-      query: () => `users`,
+      query: () => '/users',
     }),
     getUsersById: builder.query<PlaceholderUser, number>({
-      query: (id) => `users?id=${id}`,
+      query: (id) => `/users?id=${id}`,
     }),
     getUsersByUsername: builder.query<PlaceholderUser, string>({
-      query: (username) => `users?username=${username}`,
+      query: (username) => `/users?username=${username}`,
     }),
   }),
 });
@@ -26,4 +26,4 @@ export const {
   useGetUsersQuery,
   useGetUsersByIdQuery,
   useGetUsersByUsernameQuery,
-} = placeholderUsersApi;
+} = placeholderApi;

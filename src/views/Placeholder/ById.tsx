@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from 'react';
 
-import { useGetUsersByIdQuery } from '../../services/placeholderApi/users';
+import { useGetUsersByIdQuery } from 'services/placeholderApi';
 
 const ById: FunctionComponent = () => {
   const [id] = useState<number>(7);
