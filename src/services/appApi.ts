@@ -76,17 +76,53 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  // eslint-disable-next-line camelcase
+  agreed_terms_and_privacy: boolean;
+}
+
+export interface VerifyRequest {
+  email: string;
+  token: string;
+}
+
+export interface ForgotRequest {
+  email: string;
+}
+
+export interface ResetRequest {
+  email: string;
+  password: string;
+  token: string;
+}
+
+const post = (url: string) => (body: any) => ({
+  url,
+  method: 'POST',
+  body,
+});
+
 // Define a service using a base URL and expected endpoints
 export const appApi = createApi({
   reducerPath: 'appApi',
   baseQuery: baseQueryWithRefreshToken,
   endpoints: (builder) => ({
-    signIn: builder.mutation<UserResponse, LoginRequest>({
-      query: (credentials) => ({
-        url: '/sign-in',
-        method: 'POST',
-        body: credentials,
-      }),
+    login: builder.mutation<UserResponse, LoginRequest>({
+      query: post('/sign-in'),
+    }),
+    register: builder.mutation<UserResponse, RegisterRequest>({
+      query: post('/sign-up'),
+    }),
+    verifyEmail: builder.mutation<UserResponse, VerifyRequest>({
+      query: post('/verify-email'),
+    }),
+    forgotPassword: builder.mutation<UserResponse, ForgotRequest>({
+      query: post('/reset-password/'),
+    }),
+    resetPassword: builder.mutation<UserResponse, ResetRequest>({
+      query: post('/reset-password/confirm/'),
     }),
     currentUser: builder.query<User, void>({
       query: () => '/user-info',
@@ -96,4 +132,11 @@ export const appApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useSignInMutation, useCurrentUserQuery } = appApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useVerifyEmailMutation,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+  useCurrentUserQuery,
+} = appApi;

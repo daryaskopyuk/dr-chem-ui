@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Button } from '@datarobot/design-system/js/button';
+import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
 import useCurrentAccount from 'hooks/useCurrentAccount';
 import { ROUTES } from 'app-constants';
 import NavigationLogo from './NavigationLogo';
@@ -63,19 +63,27 @@ const Header: FunctionComponent<PropsType> = ({
           : null}
       </div>
 
-      <div className="side-menu">
-        {isSignedIn ? (
-          'Menu'
-        ) : (
+      {isSignedIn ? (
+        <div className="side-menu">Menu</div>
+      ) : (
+        <div className="side-menu">
           <Button
+            accentType={ACCENT_TYPES.SECONDARY}
             onClick={() => {
-              history.push(ROUTES.SIGN_IN);
+              history.push(ROUTES.LOGIN);
             }}
           >
-            Sign In
+            Login
           </Button>
-        )}
-      </div>
+          <Button
+            onClick={() => {
+              history.push(ROUTES.REGISTER);
+            }}
+          >
+            Register
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

@@ -27,3 +27,7 @@
   justify-content: flex-end;
   color: var(--text-primary);
 }
+
+.header-container .side-menu .button:not(:first-child) {
+  margin-left: var(--ds-spacing-02);
+}

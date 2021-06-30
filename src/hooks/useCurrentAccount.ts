@@ -8,7 +8,7 @@ const useCurrentAccount = () => {
     name: 'John Doe',
   };
 
-  const isSignedIn = true;
+  const isSignedIn = false;
 
   return {
     user: isSignedIn ? user : null,
