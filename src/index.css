@@ -1,5 +1,9 @@
 @import '~@fortawesome/fontawesome-pro/css/all.min.css';
 @import '~@datarobot/design-system/styles/main.css';
+@import '~@datarobot/design-system/styles/form-field.css';
+@import '~@datarobot/design-system/styles/input.css';
+@import '~@datarobot/design-system/styles/checkbox.css';
+@import '~@datarobot/design-system/styles/button.css';
 @import './fontface.css';
 
 html {

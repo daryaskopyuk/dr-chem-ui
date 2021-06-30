@@ -2,7 +2,12 @@
 
 export const ROUTES = {
   HOME: '/',
-  SIGN_IN: '/auth/sign-in',
+  AUTH: '/auth',
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
+  FORGOT_PASSWORD: '/auth/forgot-password',
+  RESET_PASSWORD: '/auth/reset-password/:token',
+  VERIFY_EMAIL: '/auth/verify-email',
   CURRENT_USER: '/auth/current-user',
   PLACEHOLDER_USERS: '/placeholder-users',
 };

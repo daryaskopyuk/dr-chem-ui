@@ -27,7 +27,7 @@ const PrivateRoute = ({
   ) : (
     <Redirect
       to={{
-        pathname: ROUTES.SIGN_IN,
+        pathname: ROUTES.LOGIN,
         state: { from: `${location.pathname}${location.search}` },
       }}
     />

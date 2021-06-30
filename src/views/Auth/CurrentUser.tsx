@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
 import { t } from 'ttag';
-import '@datarobot/design-system/styles/tabs.css';
 
 import { useCurrentUserQuery } from 'services/appApi';
 
