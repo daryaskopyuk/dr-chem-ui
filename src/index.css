@@ -1,33 +1,11 @@
 @import '~@fortawesome/fontawesome-pro/css/all.min.css';
+
 @import '~@datarobot/design-system/styles/main.css';
 @import '~@datarobot/design-system/styles/form-field.css';
 @import '~@datarobot/design-system/styles/input.css';
 @import '~@datarobot/design-system/styles/checkbox.css';
 @import '~@datarobot/design-system/styles/button.css';
-@import './fontface.css';
 
-html {
-  height: 100%;
-}
+@import 'assets/styles/fontface.css';
 
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, Helvetica, Arial, sans-serif;;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-a {
-  color: #2d8eff;
-  text-decoration: none;
-}
-
-#root {
-  height: 100%;
-}
+@import 'assets/styles/global.css';
