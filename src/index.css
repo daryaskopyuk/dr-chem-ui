@@ -23,6 +23,11 @@ code {
     monospace;
 }
 
+a {
+  color: #2d8eff;
+  text-decoration: none;
+}
+
 #root {
   height: 100%;
 }

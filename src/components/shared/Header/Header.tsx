@@ -30,6 +30,7 @@ type PropsType = {
   navItems?: NavigationItem[];
   isLogoDisabled?: boolean;
   logoImageUrl?: string | null | undefined;
+  hideSideMenu?: boolean;
 };
 
 const Header: FunctionComponent<PropsType> = ({
@@ -37,6 +38,7 @@ const Header: FunctionComponent<PropsType> = ({
   navItems,
   isLogoDisabled,
   logoImageUrl,
+  hideSideMenu,
 }: PropsType) => {
   const history = useHistory();
   const { isMobile } = useResponsive();
@@ -67,27 +69,21 @@ const Header: FunctionComponent<PropsType> = ({
         </div>
       )}
 
-      {isSignedIn ? (
-        <div className="side-menu">Menu</div>
-      ) : (
-        <div className="side-menu">
-          <Button
-            accentType={ACCENT_TYPES.SECONDARY}
-            onClick={() => {
-              history.push(ROUTES.LOGIN);
-            }}
-          >
-            Login
-          </Button>
-          <Button
-            onClick={() => {
-              history.push(ROUTES.REGISTER);
-            }}
-          >
-            Register
-          </Button>
-        </div>
-      )}
+      {!hideSideMenu &&
+        (isSignedIn ? (
+          <div className="side-menu">Menu</div>
+        ) : (
+          <div className="side-menu">
+            <Button
+              accentType={ACCENT_TYPES.SECONDARY}
+              onClick={() => {
+                history.push(ROUTES.LOGIN);
+              }}
+            >
+              Login
+            </Button>
+          </div>
+        ))}
     </div>
   );
 };
@@ -97,6 +93,7 @@ Header.defaultProps = {
   logoImageUrl: null,
   navItems: defaultHeaderItems,
   logoLink: ROUTES.HOME,
+  hideSideMenu: false,
 };
 
 export default Header;

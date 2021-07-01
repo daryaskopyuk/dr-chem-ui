@@ -2,7 +2,9 @@ import { FunctionComponent, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
-import Login from 'views/Auth/Login';
+import Callback from 'views/Auth/OAuth/DataRobotCallback';
+// import Login from 'views/Auth/Login';
+import LoginWithDataRobot from 'views/Auth/LoginWithDataRobot';
 import Register from 'views/Auth/Register';
 
 const ForgotPassword = lazy(() => import('views/Auth/ForgotPassword'));
@@ -12,8 +14,11 @@ const CurrentUser = lazy(() => import('views/Auth/CurrentUser'));
 
 const Routes: FunctionComponent = () => (
   <Switch>
+    <Route exact path={ROUTES.DATAROBOT_OAUTH_CALLBACK}>
+      <Callback />
+    </Route>
     <Route exact path={ROUTES.LOGIN}>
-      <Login />
+      <LoginWithDataRobot />
     </Route>
     <Route exact path={ROUTES.REGISTER}>
       <Register />
