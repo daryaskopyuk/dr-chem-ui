@@ -4,6 +4,7 @@ export const ROUTES = {
   HOME: '/',
   AUTH: '/auth',
   LOGIN: '/auth/login',
+  LOGIN_EMAIL: '/auth/login-email',
   REGISTER: '/auth/register',
   FORGOT_PASSWORD: '/auth/forgot-password',
   RESET_PASSWORD: '/auth/reset-password/:token',

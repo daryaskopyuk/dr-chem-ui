@@ -51,7 +51,7 @@ const Login: FunctionComponent = () => {
   return (
     <SimplePageLayout hideHeaderSideMenu>
       <div className={classes.auth}>
-        <header className={classes.authHeader}>
+        <div className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Login`}</h1>
           <form>
             <Input
@@ -90,7 +90,7 @@ const Login: FunctionComponent = () => {
               </Link>
             </div>
           </form>
-        </header>
+        </div>
       </div>
     </SimplePageLayout>
   );

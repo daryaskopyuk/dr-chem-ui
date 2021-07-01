@@ -16,10 +16,10 @@ const CurrentUser: FunctionComponent = () => {
   return (
     <SimplePageLayout>
       <div className={classes.auth}>
-        <header className={classes.authHeader}>
+        <div className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Current User`}</h1>
           <pre>{JSON.stringify(data, null, 2)}</pre>
-        </header>
+        </div>
       </div>
     </SimplePageLayout>
   );

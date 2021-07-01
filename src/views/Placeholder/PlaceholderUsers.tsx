@@ -24,7 +24,7 @@ const PlaceholderUsers: FunctionComponent = () => {
 
   return (
     <SimplePageLayout>
-      <header className={classes.placeholderUsers}>
+      <div className={classes.placeholderUsers}>
         <h1 className="page-header app-heading">Users</h1>
         <Tabs
           options={tabs}
@@ -37,7 +37,7 @@ const PlaceholderUsers: FunctionComponent = () => {
         {activeTab === 'all' && <All />}
         {activeTab === 'by-id' && <ById />}
         {activeTab === 'by-username' && <ByUsername />}
-      </header>
+      </div>
     </SimplePageLayout>
   );
 };

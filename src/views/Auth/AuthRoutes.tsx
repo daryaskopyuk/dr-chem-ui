@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
 import Callback from 'views/Auth/OAuth/DataRobotCallback';
-// import Login from 'views/Auth/Login';
+import Login from 'views/Auth/Login';
 import LoginWithDataRobot from 'views/Auth/LoginWithDataRobot';
 import Register from 'views/Auth/Register';
 
@@ -16,6 +16,9 @@ const Routes: FunctionComponent = () => (
   <Switch>
     <Route exact path={ROUTES.DATAROBOT_OAUTH_CALLBACK}>
       <Callback />
+    </Route>
+    <Route exact path={ROUTES.LOGIN_EMAIL}>
+      <Login />
     </Route>
     <Route exact path={ROUTES.LOGIN}>
       <LoginWithDataRobot />

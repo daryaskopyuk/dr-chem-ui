@@ -50,11 +50,11 @@ const VerifyEmail: FunctionComponent = () => {
   return (
     <SimplePageLayout>
       <div className={classes.auth}>
-        <header className={classes.authHeader}>
+        <div className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Login`}</h1>
           {isLoading && <p className="view-header">Loading...</p>}
           {errors && <pre>{JSON.stringify(errors, null, 2)}</pre>}
-        </header>
+        </div>
       </div>
     </SimplePageLayout>
   );
