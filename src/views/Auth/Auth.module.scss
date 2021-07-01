@@ -11,6 +11,11 @@
     width: 100%;
   }
 
+  pre {
+    max-width: 95vw;
+    overflow-x: scroll;
+  }
+
   .authHeader {
     display: flex;
     flex-direction: column;

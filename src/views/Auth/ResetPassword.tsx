@@ -51,7 +51,7 @@ const ResetPassword: FunctionComponent = () => {
   return (
     <SimplePageLayout>
       <div className={classes.auth}>
-        <header className={classes.authHeader}>
+        <div className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Reset Password`}</h1>
           <form>
             <Input
@@ -79,7 +79,7 @@ const ResetPassword: FunctionComponent = () => {
               </Button>
             </div>
           </form>
-        </header>
+        </div>
       </div>
     </SimplePageLayout>
   );

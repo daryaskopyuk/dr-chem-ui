@@ -20,11 +20,11 @@ const Callback: FunctionComponent = () => {
   return (
     <SimplePageLayout hideHeaderSideMenu>
       <div className={classes.auth}>
-        <header className={classes.authHeader}>
+        <div className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Callback Params:`}</h1>
           <pre>Code - {params.get('code')}</pre>
           <pre>State - {params.get('state')}</pre>
-        </header>
+        </div>
       </div>
     </SimplePageLayout>
   );

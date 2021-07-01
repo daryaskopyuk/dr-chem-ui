@@ -52,7 +52,7 @@ const Register: FunctionComponent = () => {
   return (
     <SimplePageLayout>
       <div className={classes.auth}>
-        <header className={classes.authHeader}>
+        <div className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Register`}</h1>
           {successPage ? (
             <p className="view-header">Check your email</p>
@@ -127,7 +127,7 @@ const Register: FunctionComponent = () => {
               </div>
             </form>
           )}
-        </header>
+        </div>
       </div>
     </SimplePageLayout>
   );

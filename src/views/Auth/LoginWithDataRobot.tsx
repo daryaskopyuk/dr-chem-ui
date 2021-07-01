@@ -30,7 +30,7 @@ const getAuthorizeUrl = () => {
 const LoginWithDataRobot: FunctionComponent = () => (
   <SimplePageLayout hideHeaderSideMenu>
     <div className={classes.auth}>
-      <header className={classes.authHeader}>
+      <div className={classes.authHeader}>
         <h1 className="page-header app-heading">{t`Login`}</h1>
         <div className={classes.authSection}>
           <div className={classes.sectionContent}>
@@ -48,7 +48,7 @@ const LoginWithDataRobot: FunctionComponent = () => (
             <a href="mailto:support@datarobot.com">support@datarobot.com</a>
           </div>
         </div>
-      </header>
+      </div>
     </div>
   </SimplePageLayout>
 );
