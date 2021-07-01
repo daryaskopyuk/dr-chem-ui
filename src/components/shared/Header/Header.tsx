@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
 import useCurrentAccount from 'hooks/useCurrentAccount';
+import useResponsive from 'hooks/useResponsive';
 import { ROUTES } from 'app-constants';
 import NavigationLogo from './NavigationLogo';
 
@@ -38,6 +39,7 @@ const Header: FunctionComponent<PropsType> = ({
   logoImageUrl,
 }: PropsType) => {
   const history = useHistory();
+  const { isMobile } = useResponsive();
   const { isSignedIn } = useCurrentAccount();
 
   return (
@@ -47,21 +49,23 @@ const Header: FunctionComponent<PropsType> = ({
         isDisabled={isLogoDisabled || false}
         imageUrl={logoImageUrl}
       />
-      <div className="child-tabs-container">
-        {navItems?.length
-          ? navItems.map((item) =>
-              item.isShown ? (
-                <a
-                  key={item.key}
-                  href={item.link}
-                  className="navigation-option"
-                >
-                  {item.name}
-                </a>
-              ) : null
-            )
-          : null}
-      </div>
+      {!isMobile && (
+        <div className="child-tabs-container">
+          {navItems?.length
+            ? navItems.map((item) =>
+                item.isShown ? (
+                  <a
+                    key={item.key}
+                    href={item.link}
+                    className="navigation-option"
+                  >
+                    {item.name}
+                  </a>
+                ) : null
+              )
+            : null}
+        </div>
+      )}
 
       {isSignedIn ? (
         <div className="side-menu">Menu</div>
