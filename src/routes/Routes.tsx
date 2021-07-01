@@ -1,30 +1,35 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
+import PrivateRoute from 'routes/PrivateRoute';
+
 import Home from 'views/Home/Home';
 import AuthRoutes from 'views/Auth/AuthRoutes';
-import NoMatch from 'views/NoMatch/NoMatch';
-import PlaceholderUsers from 'views/Placeholder/PlaceholderUsers';
 
-import PrivateRoute from './PrivateRoute';
+const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
+const PlaceholderUsers = lazy(
+  () => import('views/Placeholder/PlaceholderUsers')
+);
 
 const Routes: FunctionComponent = () => (
   <Router>
-    <Switch>
-      <Route exact path={ROUTES.HOME}>
-        <Home />
-      </Route>
-      <Route path={ROUTES.AUTH}>
-        <AuthRoutes />
-      </Route>
-      <PrivateRoute exact path={ROUTES.PLACEHOLDER_USERS}>
-        <PlaceholderUsers />
-      </PrivateRoute>
-      <Route path="*">
-        <NoMatch />
-      </Route>
-    </Switch>
+    <Suspense fallback={<>Loading...</>}>
+      <Switch>
+        <Route exact path={ROUTES.HOME}>
+          <Home />
+        </Route>
+        <Route path={ROUTES.AUTH}>
+          <AuthRoutes />
+        </Route>
+        <PrivateRoute exact path={ROUTES.PLACEHOLDER_USERS}>
+          <PlaceholderUsers />
+        </PrivateRoute>
+        <Route path="*">
+          <NoMatch />
+        </Route>
+      </Switch>
+    </Suspense>
   </Router>
 );
 
