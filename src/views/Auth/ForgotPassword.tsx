@@ -8,7 +8,7 @@ import { useForgotPasswordMutation } from 'services/appApi';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import './Auth.css';
+import classes from './Auth.module.scss';
 
 const ForgotPassword: FunctionComponent = () => {
   const [email, setEmail] = useState<string>('');
@@ -37,8 +37,8 @@ const ForgotPassword: FunctionComponent = () => {
 
   return (
     <SimplePageLayout>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Forgot Password`}</h1>
           {successPage ? (
             <p className="view-header">Check your email</p>

@@ -7,7 +7,7 @@ import useResponsive from 'hooks/useResponsive';
 import { ROUTES } from 'app-constants';
 import NavigationLogo from './NavigationLogo';
 
-import './Header.css';
+import classes from './Header.module.scss';
 
 type NavigationItem = {
   key: string;
@@ -45,21 +45,22 @@ const Header: FunctionComponent<PropsType> = ({
   const { isSignedIn } = useCurrentAccount();
 
   return (
-    <div className="header-container">
+    <div className={classes.headerContainer}>
       <NavigationLogo
+        className={classes.navigationLogo}
         link={logoLink || ''}
         isDisabled={isLogoDisabled || false}
         imageUrl={logoImageUrl}
       />
       {!isMobile && (
-        <div className="child-tabs-container">
+        <div className={classes.childTabsContainer}>
           {navItems?.length
             ? navItems.map((item) =>
                 item.isShown ? (
                   <a
                     key={item.key}
                     href={item.link}
-                    className="navigation-option"
+                    className={classes.navigationOption}
                   >
                     {item.name}
                   </a>
@@ -71,9 +72,9 @@ const Header: FunctionComponent<PropsType> = ({
 
       {!hideSideMenu &&
         (isSignedIn ? (
-          <div className="side-menu">Menu</div>
+          <div className={classes.sideMenu}>Menu</div>
         ) : (
-          <div className="side-menu">
+          <div className={classes.sideMenu}>
             <Button
               accentType={ACCENT_TYPES.SECONDARY}
               onClick={() => {

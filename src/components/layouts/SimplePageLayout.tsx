@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'react';
 
 import Header from 'components/shared/Header/Header';
-import './Layouts.css';
+
+import classes from './Layouts.module.scss';
 
 type PropsType = {
   children: JSX.Element[] | JSX.Element;
@@ -12,11 +13,11 @@ const SimplePageLayout: FunctionComponent<PropsType> = ({
   children,
   hideHeaderSideMenu,
 }: PropsType) => (
-  <div className="simple-page-layout">
-    <div className="header-wrapper">
+  <div className={classes.simplePageLayout}>
+    <div className={classes.headerWrapper}>
       <Header hideSideMenu={hideHeaderSideMenu} />
     </div>
-    <div className="main-content-wrapper">{children}</div>
+    <div className={classes.mainContentWrapper}>{children}</div>
   </div>
 );
 

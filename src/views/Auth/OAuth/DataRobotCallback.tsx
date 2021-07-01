@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import { ROUTES } from 'app-constants';
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import '../Auth.css';
+import classes from '../Auth.module.scss';
 
 const Callback: FunctionComponent = () => {
   const { search } = useLocation();
@@ -19,8 +19,8 @@ const Callback: FunctionComponent = () => {
 
   return (
     <SimplePageLayout hideHeaderSideMenu>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Callback Params:`}</h1>
           <pre>Code - {params.get('code')}</pre>
           <pre>State - {params.get('state')}</pre>

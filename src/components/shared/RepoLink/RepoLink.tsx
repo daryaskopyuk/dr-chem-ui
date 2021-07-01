@@ -1,9 +1,14 @@
 import { FunctionComponent } from 'react';
+import classNames from 'classnames';
 import { t } from 'ttag';
 
-const RepoLink: FunctionComponent = () => (
+type PropsType = {
+  className: string | undefined;
+};
+
+const RepoLink: FunctionComponent<PropsType> = ({ className }: PropsType) => (
   <a
-    className="home-link bold-label"
+    className={classNames(className, 'bold-label')}
     href="https://github.com/datarobot/cra-template-datarobot"
     target="_blank"
     rel="noopener noreferrer"

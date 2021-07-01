@@ -10,7 +10,7 @@ import { useResetPasswordMutation } from 'services/appApi';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import './Auth.css';
+import classes from './Auth.module.scss';
 
 interface RouteParams {
   token: string;
@@ -50,8 +50,8 @@ const ResetPassword: FunctionComponent = () => {
 
   return (
     <SimplePageLayout>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Reset Password`}</h1>
           <form>
             <Input

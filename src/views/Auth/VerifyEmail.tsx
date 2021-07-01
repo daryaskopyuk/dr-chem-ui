@@ -9,7 +9,7 @@ import useSearchParams from 'hooks/useSearchParams';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import './Auth.css';
+import classes from './Auth.module.scss';
 
 interface RouteParams {
   email: string;
@@ -49,8 +49,8 @@ const VerifyEmail: FunctionComponent = () => {
 
   return (
     <SimplePageLayout>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Login`}</h1>
           {isLoading && <p className="view-header">Loading...</p>}
           {errors && <pre>{JSON.stringify(errors, null, 2)}</pre>}

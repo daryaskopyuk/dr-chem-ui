@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { t } from 'ttag';
 import { Button } from '@datarobot/design-system/js/button';
 import { Input } from '@datarobot/design-system/js/input';
+import { VALIDATION_RULE_TYPES } from '@datarobot/design-system/js/form-field';
 import {
   Checkbox,
   CHECKBOX_PLACEMENTS,
@@ -13,8 +14,7 @@ import { useRegisterMutation } from 'services/appApi';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import './Auth.css';
-import { VALIDATION_RULE_TYPES } from '@datarobot/design-system/js/form-field';
+import classes from './Auth.module.scss';
 
 const Register: FunctionComponent = () => {
   const [email, setEmail] = useState<string>('');
@@ -51,8 +51,8 @@ const Register: FunctionComponent = () => {
 
   return (
     <SimplePageLayout>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Register`}</h1>
           {successPage ? (
             <p className="view-header">Check your email</p>
