@@ -1,13 +1,14 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
 import Login from 'views/Auth/Login';
 import Register from 'views/Auth/Register';
-import ForgotPassword from 'views/Auth/ForgotPassword';
-import ResetPassword from 'views/Auth/ResetPassword';
-import VerifyEmail from 'views/Auth/VerifyEmail';
-import CurrentUser from 'views/Auth/CurrentUser';
+
+const ForgotPassword = lazy(() => import('views/Auth/ForgotPassword'));
+const ResetPassword = lazy(() => import('views/Auth/ResetPassword'));
+const VerifyEmail = lazy(() => import('views/Auth/VerifyEmail'));
+const CurrentUser = lazy(() => import('views/Auth/CurrentUser'));
 
 const Routes: FunctionComponent = () => (
   <Switch>
