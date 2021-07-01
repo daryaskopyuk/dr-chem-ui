@@ -49,7 +49,7 @@ const Login: FunctionComponent = () => {
   };
 
   return (
-    <SimplePageLayout>
+    <SimplePageLayout hideHeaderSideMenu>
       <div className="auth">
         <header className="auth-header">
           <h1 className="page-header app-heading">{t`Login`}</h1>
