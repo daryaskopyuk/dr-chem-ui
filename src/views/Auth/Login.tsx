@@ -11,7 +11,7 @@ import { useLoginMutation } from 'services/appApi';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import './Auth.css';
+import classes from './Auth.module.scss';
 
 const Login: FunctionComponent = () => {
   const { push } = useHistory();
@@ -50,8 +50,8 @@ const Login: FunctionComponent = () => {
 
   return (
     <SimplePageLayout hideHeaderSideMenu>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Login`}</h1>
           <form>
             <Input

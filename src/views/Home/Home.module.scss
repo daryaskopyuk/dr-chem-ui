@@ -1,0 +1,19 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+
+  .homeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .repoLink {
+    background-color: var(--ds-orange-100);
+    border-radius: 2px;
+    text-decoration: none;
+    padding: var(--ds-spacing-02) var(--ds-spacing-04);
+  }
+}

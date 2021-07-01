@@ -1,0 +1,33 @@
+.headerContainer {
+  display: flex;
+  height: 50px;
+  background: var(--page-background-color);
+
+  .navigationLogo {
+    display: flex;
+  }
+
+  .childTabsContainer {
+    display: flex;
+    align-items: center;
+    margin-left: var(--ds-spacing-04);
+  }
+
+  .navigationOption {
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: var(--ds-spacing-02) var(--ds-spacing-04);
+  }
+
+  .sideMenu {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--text-primary);
+
+    :global(.button):not(:first-child) {
+      margin-left: var(--ds-spacing-02);
+    }
+  }
+}

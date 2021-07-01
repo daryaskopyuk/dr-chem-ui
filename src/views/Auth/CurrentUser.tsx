@@ -5,7 +5,7 @@ import { useCurrentUserQuery } from 'services/appApi';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
-import './Auth.css';
+import classes from './Auth.module.scss';
 
 const CurrentUser: FunctionComponent = () => {
   const { isLoading, error, data } = useCurrentUserQuery();
@@ -15,8 +15,8 @@ const CurrentUser: FunctionComponent = () => {
 
   return (
     <SimplePageLayout>
-      <div className="auth">
-        <header className="auth-header">
+      <div className={classes.auth}>
+        <header className={classes.authHeader}>
           <h1 className="page-header app-heading">{t`Current User`}</h1>
           <pre>{JSON.stringify(data, null, 2)}</pre>
         </header>
