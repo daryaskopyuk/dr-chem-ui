@@ -1,12 +1,12 @@
 import { FunctionComponent, useState } from 'react';
 import { t, useLocale as setLocale } from 'ttag';
 import { Tabs } from '@datarobot/design-system/js/tabs';
+import { Button } from '@datarobot/design-system/js/button';
 import '@datarobot/design-system/styles/tabs.css';
 import { ReactComponent as AppLogo } from 'assets/images/app-logo.svg';
 import { saveLocale, getLocale } from 'i18n-init';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
-import RepoLink from 'components/shared/RepoLink/RepoLink';
 
 import classes from './Home.module.scss';
 
@@ -41,7 +41,17 @@ const Home: FunctionComponent = () => {
             testId="tabs-locale"
             className="margin-bottom-5"
           />
-          <RepoLink className={classes.repoLink} />
+          <Button
+            className={classes.repoLink}
+            onClick={() => {
+              window.location.href =
+                'https://github.com/datarobot/cra-template-datarobot';
+            }}
+            testId="app-link"
+          >
+            {t`Our repo on GitHub`}
+            <span className="fas fa-external-link-alt margin-left-5" />
+          </Button>
         </header>
       </div>
     </SimplePageLayout>
