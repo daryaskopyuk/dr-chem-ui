@@ -1,0 +1,98 @@
+.navContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ds-dark-80);
+}
+
+.wrapper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.container {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.buttonWrapper {
+  position: absolute;
+  display: flex;
+
+  right: var(--ds-spacing-02);
+  top: var(--ds-spacing-02);
+  z-index: 1;
+}
+
+.closeButton {
+  color: var(--ds-white);
+
+  margin-left: 0;
+  border: none;
+  background-color: transparent;
+  > svg {
+    width: 35px;
+  }
+}
+
+.innerContainer {
+  position: relative;
+  width: 100vw;
+  z-index: 10;
+}
+
+.section {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.open {
+  transform: translateX(20%);
+  transition: all 150ms ease-in;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 16px 32px 0px;
+}
+
+.closed {
+  transform: translateX(100%);
+  transition: all 150ms ease-in;
+}
+
+.show {
+  opacity: 1;
+  transition-property: opacity;
+  transition-timing-function: ease-in;
+  transition-duration: 150ms;
+}
+
+.hide {
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: ease-in;
+  transition-duration: 150ms;
+}
+
+.hidden {
+  z-index: -9999;
+}
+
+.contentWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 50px var(--ds-spacing-05) var(--ds-spacing-05);
+  overflow-y: auto;
+}

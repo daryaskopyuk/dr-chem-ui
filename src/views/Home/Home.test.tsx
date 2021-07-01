@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 import Home from './Home';
 
@@ -12,20 +13,32 @@ describe('Home', () => {
   });
 
   test('renders CRA header', () => {
-    render(<Home />);
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
     const linkElement = screen.getByText('CRA DataRobot Template');
     expect(linkElement).toBeInTheDocument();
   });
 
   test('should have default locale equal to "en"', () => {
-    render(<Home />);
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
     const enTabElement = screen.getByTestId('tab-locale-en');
 
     expect(enTabElement).toHaveAttribute('checked');
   });
 
   test('should switch locale', () => {
-    render(<Home />);
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
     expect(screen.getByText('CRA DataRobot Template')).toBeInTheDocument();
 
     const ukTabElement = screen.getByTestId('tab-locale-uk-label');

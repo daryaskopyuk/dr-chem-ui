@@ -1,10 +1,14 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
+import Link from 'components/shared/Link/Link';
 import useCurrentAccount from 'hooks/useCurrentAccount';
 import useResponsive from 'hooks/useResponsive';
 import { ROUTES } from 'app-constants';
+
+import { ReactComponent as MenuIcon } from 'assets/images/hamburger.svg';
+import Drawer from 'components/shared/Drawer/Drawer';
 import NavigationLogo from './NavigationLogo';
 
 import classes from './Header.module.scss';
@@ -19,7 +23,19 @@ type NavigationItem = {
 const defaultHeaderItems: NavigationItem[] = [
   {
     key: 'users',
-    name: 'List Users',
+    name: 'Users',
+    link: ROUTES.PLACEHOLDER_USERS,
+    isShown: true,
+  },
+  {
+    key: 'organizations',
+    name: 'Organizations',
+    link: ROUTES.PLACEHOLDER_USERS,
+    isShown: true,
+  },
+  {
+    key: 'groups',
+    name: 'Groups',
     link: ROUTES.PLACEHOLDER_USERS,
     isShown: true,
   },
@@ -30,7 +46,7 @@ type PropsType = {
   navItems?: NavigationItem[];
   isLogoDisabled?: boolean;
   logoImageUrl?: string | null | undefined;
-  hideSideMenu?: boolean;
+  hideAuthButtons?: boolean;
 };
 
 const Header: FunctionComponent<PropsType> = ({
@@ -38,11 +54,50 @@ const Header: FunctionComponent<PropsType> = ({
   navItems,
   isLogoDisabled,
   logoImageUrl,
-  hideSideMenu,
+  hideAuthButtons,
 }: PropsType) => {
   const history = useHistory();
   const { isMobile } = useResponsive();
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const { isSignedIn } = useCurrentAccount();
+
+  const navitationItems = useMemo(
+    () =>
+      navItems?.length
+        ? navItems.map((item) =>
+            item.isShown ? (
+              <Link
+                key={item.key}
+                to={item.link}
+                className={classes.navigationOption}
+              >
+                {item.name}
+              </Link>
+            ) : null
+          )
+        : null,
+    [navItems]
+  );
+
+  const authSection = useMemo(
+    () =>
+      !isSignedIn ? (
+        !hideAuthButtons && (
+          <Button
+            className={classes.loginButton}
+            accentType={ACCENT_TYPES.SECONDARY}
+            onClick={() => {
+              history.push(ROUTES.LOGIN);
+            }}
+          >
+            Login
+          </Button>
+        )
+      ) : (
+        <div>Avatar</div>
+      ),
+    [history, isSignedIn, hideAuthButtons]
+  );
 
   return (
     <div className={classes.headerContainer}>
@@ -53,38 +108,31 @@ const Header: FunctionComponent<PropsType> = ({
         imageUrl={logoImageUrl}
       />
       {!isMobile && (
-        <div className={classes.childTabsContainer}>
-          {navItems?.length
-            ? navItems.map((item) =>
-                item.isShown ? (
-                  <a
-                    key={item.key}
-                    href={item.link}
-                    className={classes.navigationOption}
-                  >
-                    {item.name}
-                  </a>
-                ) : null
-              )
-            : null}
-        </div>
+        <div className={classes.childTabsContainer}>{navitationItems}</div>
       )}
 
-      {!hideSideMenu &&
-        (isSignedIn ? (
-          <div className={classes.sideMenu}>Menu</div>
-        ) : (
-          <div className={classes.sideMenu}>
-            <Button
-              accentType={ACCENT_TYPES.SECONDARY}
-              onClick={() => {
-                history.push(ROUTES.LOGIN);
-              }}
-            >
-              Login
-            </Button>
-          </div>
-        ))}
+      {isMobile ? (
+        <div className={classes.sideMenu}>
+          <MenuIcon
+            onClick={() => {
+              setDrawerOpen(true);
+            }}
+          />
+          <Drawer
+            isOpen={drawerOpen}
+            onClose={() => {
+              setDrawerOpen(false);
+            }}
+          >
+            <>
+              {authSection}
+              {navitationItems}
+            </>
+          </Drawer>
+        </div>
+      ) : (
+        <div className={classes.sideMenu}>{authSection}</div>
+      )}
     </div>
   );
 };
@@ -94,7 +142,7 @@ Header.defaultProps = {
   logoImageUrl: null,
   navItems: defaultHeaderItems,
   logoLink: ROUTES.HOME,
-  hideSideMenu: false,
+  hideAuthButtons: false,
 };
 
 export default Header;

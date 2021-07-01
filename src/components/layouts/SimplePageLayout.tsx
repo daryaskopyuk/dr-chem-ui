@@ -15,7 +15,7 @@ const SimplePageLayout: FunctionComponent<PropsType> = ({
 }: PropsType) => (
   <div className={classes.simplePageLayout}>
     <div className={classes.headerWrapper}>
-      <Header hideSideMenu={hideHeaderSideMenu} />
+      <Header hideAuthButtons={hideHeaderSideMenu} />
     </div>
     <div className={classes.mainContentWrapper}>{children}</div>
   </div>

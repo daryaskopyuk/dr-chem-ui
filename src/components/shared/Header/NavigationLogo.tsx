@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Tooltip } from '@datarobot/design-system/js/tooltip';
+import Link from 'components/shared/Link/Link';
 import defaultLogo from 'assets/images/dr-logo-for-dark-bg.svg';
 
 type PropsType = {
@@ -17,15 +17,13 @@ const NavigationLogo: FunctionComponent<PropsType> = ({
 }: PropsType) => {
   const logoHref = isDisabled ? null : link;
   return (
-    <Tooltip placement="bottom">
-      <a className={className} test-id="navigation-logo" href={logoHref || ''}>
-        <img
-          className="dr-logo"
-          src={imageUrl || defaultLogo}
-          alt="DataRobot Logo"
-        />
-      </a>
-    </Tooltip>
+    <Link className={className} to={logoHref || ''}>
+      <img
+        className="dr-logo"
+        src={imageUrl || defaultLogo}
+        alt="DataRobot Logo"
+      />
+    </Link>
   );
 };
 
