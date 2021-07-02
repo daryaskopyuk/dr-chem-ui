@@ -22,21 +22,15 @@ type NavigationItem = {
 
 const defaultHeaderItems: NavigationItem[] = [
   {
-    key: 'users',
-    name: 'Users',
-    link: ROUTES.PLACEHOLDER_USERS,
-    isShown: true,
-  },
-  {
-    key: 'organizations',
-    name: 'Organizations',
-    link: ROUTES.PLACEHOLDER_USERS,
-    isShown: true,
-  },
-  {
     key: 'asteroids',
     name: 'Asteroids',
     link: ROUTES.ASTEROIDS,
+    isShown: true,
+  },
+  {
+    key: 'users',
+    name: 'Users',
+    link: ROUTES.PLACEHOLDER_USERS,
     isShown: true,
   },
 ];
