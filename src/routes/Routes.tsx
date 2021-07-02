@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
 import PrivateRoute from 'routes/PrivateRoute';
+import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
 import Home from 'views/Home/Home';
 import AuthRoutes from 'views/Auth/AuthRoutes';
@@ -15,7 +16,7 @@ const Asteroids = lazy(() => import('views/Asteroids/Asteroids'));
 
 const Routes: FunctionComponent = () => (
   <Router>
-    <Suspense fallback={<>Loading...</>}>
+    <Suspense fallback={<SimplePageLayout>Loading...</SimplePageLayout>}>
       <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home />
