@@ -7,7 +7,6 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 import { getLocalstorage, setLocalstorage } from 'utils/localStore';
-import User from 'interfaces/user';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_URL,
@@ -63,41 +62,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   return result;
 };
 
-export interface UserResponse {
-  user: User;
-  tokens: {
-    access: string;
-    refresh: string;
-  };
-}
-
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-export interface RegisterRequest {
-  email: string;
-  password: string;
-  // eslint-disable-next-line camelcase
-  agreed_terms_and_privacy: boolean;
-}
-
-export interface VerifyRequest {
-  email: string;
-  token: string;
-}
-
-export interface ForgotRequest {
-  email: string;
-}
-
-export interface ResetRequest {
-  email: string;
-  password: string;
-  token: string;
-}
-
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const post = (url: string) => (body: any) => ({
   url,
   method: 'POST',
@@ -108,25 +74,8 @@ const post = (url: string) => (body: any) => ({
 export const appApi = createApi({
   reducerPath: 'appApi',
   baseQuery: baseQueryWithRefreshToken,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   endpoints: (builder) => ({
-    login: builder.mutation<UserResponse, LoginRequest>({
-      query: post('/sign-in'),
-    }),
-    register: builder.mutation<UserResponse, RegisterRequest>({
-      query: post('/sign-up'),
-    }),
-    verifyEmail: builder.mutation<UserResponse, VerifyRequest>({
-      query: post('/verify-email'),
-    }),
-    forgotPassword: builder.mutation<UserResponse, ForgotRequest>({
-      query: post('/reset-password/'),
-    }),
-    resetPassword: builder.mutation<UserResponse, ResetRequest>({
-      query: post('/reset-password/confirm/'),
-    }),
-    currentUser: builder.query<User, void>({
-      query: () => '/user-info',
-    }),
     detect: builder.query<any, void>({
       query: () => '/detect',
     }),
@@ -135,12 +84,4 @@ export const appApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const {
-  useLoginMutation,
-  useRegisterMutation,
-  useVerifyEmailMutation,
-  useForgotPasswordMutation,
-  useResetPasswordMutation,
-  useCurrentUserQuery,
-  useDetectQuery,
-} = appApi;
+export const { useDetectQuery } = appApi;
