@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
 import Link from 'components/shared/Link/Link';
-import useCurrentAccount from 'hooks/useCurrentAccount';
+import useCurrentUser from 'hooks/useCurrentUser';
 import useResponsive from 'hooks/useResponsive';
 import { ROUTES } from 'app-constants';
 
@@ -59,7 +59,7 @@ const Header: FunctionComponent<PropsType> = ({
   const history = useHistory();
   const { isMobile } = useResponsive();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { isSignedIn } = useCurrentAccount();
+  const { isSignedIn, logOutUser } = useCurrentUser();
 
   const navitationItems = useMemo(
     () =>
@@ -97,9 +97,15 @@ const Header: FunctionComponent<PropsType> = ({
           </Button>
         )
       ) : (
-        <div className={classes.avatar}>Avatar</div>
+        <Button
+          className={classes.avatar}
+          accentType={ACCENT_TYPES.COMMAND}
+          onClick={logOutUser}
+        >
+          Log Out
+        </Button>
       ),
-    [history, isSignedIn, hideAuthButtons]
+    [logOutUser, history, isSignedIn, hideAuthButtons]
   );
 
   return (

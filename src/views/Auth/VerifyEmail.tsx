@@ -1,11 +1,9 @@
 import { FunctionComponent, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { t } from 'ttag';
 
-import { ROUTES } from 'app-constants';
-import { setLocalstorage } from 'utils/localStore';
 import { useVerifyEmailMutation } from 'services/appApi';
 import useSearchParams from 'hooks/useSearchParams';
+import useCurrentUser from 'hooks/useCurrentUser';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
 
@@ -17,7 +15,7 @@ interface RouteParams {
 }
 
 const VerifyEmail: FunctionComponent = () => {
-  const { push } = useHistory();
+  const { logInUser } = useCurrentUser();
   const { email, token } = useSearchParams<RouteParams>();
 
   const [errors, setErrors] = useState<any>(null);
@@ -26,16 +24,11 @@ const VerifyEmail: FunctionComponent = () => {
   const [verifyEmailMutation, { isLoading }] = useVerifyEmailMutation();
   const verifyEmail = async () => {
     try {
-      const {
-        // user,
-        tokens: { access, refresh },
-      } = await verifyEmailMutation({
+      const { user, tokens } = await verifyEmailMutation({
         email,
         token,
       }).unwrap();
-      setLocalstorage('accessToken', access);
-      setLocalstorage('refreshToken', refresh);
-      push(ROUTES.CURRENT_USER);
+      logInUser(user, tokens);
     } catch (err) {
       const { data } = err;
       setErrors(data);

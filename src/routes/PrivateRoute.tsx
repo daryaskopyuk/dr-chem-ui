@@ -1,5 +1,5 @@
 import { Route, Redirect, useLocation } from 'react-router-dom';
-import useCurrentAccount from 'hooks/useCurrentAccount';
+import useCurrentUser from 'hooks/useCurrentUser';
 import { ROUTES } from 'app-constants';
 
 type PrivateRouteProps = {
@@ -18,7 +18,7 @@ const PrivateRoute = ({
   children,
 }: PrivateRouteProps) => {
   const location = useLocation();
-  const { isSignedIn } = useCurrentAccount();
+  const { isSignedIn } = useCurrentUser();
 
   return isSignedIn ? (
     <Route path={path} exact={exact} component={component} render={render}>
