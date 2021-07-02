@@ -4,6 +4,10 @@ WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
 RUN yarn
 COPY . ./
+
+ARG REACT_APP_DATAROBOT_OAUTH_CLIENT_ID="MHDAtbiyhqOB9FVyeNxr1Snj6Y484wmY"
+ARG REACT_APP_DATAROBOT_OAUTH_AUTHORIZE_URL="https://staging.datarobot.com/oauth/authenticate"
+
 RUN yarn build
 
 # Stage 2 - the production environment
