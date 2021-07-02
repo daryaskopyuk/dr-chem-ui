@@ -32,7 +32,7 @@ const Home: FunctionComponent = () => {
       <div className={classes.home}>
         <div className={classes.homeHeader}>
           <AppLogo className="margin-bottom-5" test-id="app-logo" />
-          <h1 className="page-header app-heading">{t`CRA DataRobot Template`}</h1>
+          <h1 className="page-header app-heading">{t`Welcome to UI App Template!`}</h1>
           <Tabs
             options={tabs}
             onSelect={onTabChange}
@@ -45,11 +45,11 @@ const Home: FunctionComponent = () => {
             className={classes.repoLink}
             onClick={() => {
               window.location.href =
-                'https://github.com/datarobot/cra-template-datarobot';
+                'https://gitlab.solutions.drdev.io/solutions-platform2/example-projects/cra-template-app';
             }}
             testId="app-link"
           >
-            {t`Our repo on GitHub`}
+            {t`Our repo on GitLab`}
             <span className="fas fa-external-link-alt margin-left-5" />
           </Button>
         </div>

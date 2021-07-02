@@ -70,6 +70,9 @@ const Header: FunctionComponent<PropsType> = ({
                 key={item.key}
                 to={item.link}
                 className={classes.navigationOption}
+                onClick={() => {
+                  setDrawerOpen(false);
+                }}
               >
                 {item.name}
               </Link>
@@ -94,7 +97,7 @@ const Header: FunctionComponent<PropsType> = ({
           </Button>
         )
       ) : (
-        <div>Avatar</div>
+        <div className={classes.avatar}>Avatar</div>
       ),
     [history, isSignedIn, hideAuthButtons]
   );
