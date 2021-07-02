@@ -10,7 +10,7 @@ import { getLocalstorage, setLocalstorage } from 'utils/localStore';
 import User from 'interfaces/user';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.REACT_APP_SE_API_URL,
+  baseUrl: process.env.REACT_APP_API_URL,
   prepareHeaders: (headers) => {
     const accessToken = getLocalstorage('accessToken');
     // If we have a token set in local storage, pass it to server.
@@ -127,6 +127,9 @@ export const appApi = createApi({
     currentUser: builder.query<User, void>({
       query: () => '/user-info',
     }),
+    detect: builder.query<any, void>({
+      query: () => '/detect',
+    }),
   }),
 });
 
@@ -139,4 +142,5 @@ export const {
   useForgotPasswordMutation,
   useResetPasswordMutation,
   useCurrentUserQuery,
+  useDetectQuery,
 } = appApi;
