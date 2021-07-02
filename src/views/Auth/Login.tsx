@@ -1,12 +1,12 @@
 import { FunctionComponent, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { t } from 'ttag';
 import { Button } from '@datarobot/design-system/js/button';
 import { Input } from '@datarobot/design-system/js/input';
 import { VALIDATION_RULE_TYPES } from '@datarobot/design-system/js/form-field';
 
 import { ROUTES } from 'app-constants';
-import { setLocalstorage } from 'utils/localStore';
+import useCurrentUser from 'hooks/useCurrentUser';
 import { useLoginMutation } from 'services/appApi';
 
 import SimplePageLayout from 'components/layouts/SimplePageLayout';
@@ -14,7 +14,7 @@ import SimplePageLayout from 'components/layouts/SimplePageLayout';
 import classes from './Auth.module.scss';
 
 const Login: FunctionComponent = () => {
-  const { push } = useHistory();
+  const { logInUser } = useCurrentUser();
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -25,16 +25,11 @@ const Login: FunctionComponent = () => {
   const [loginMutation, { isLoading }] = useLoginMutation();
   const login = async () => {
     try {
-      const {
-        // user,
-        tokens: { access, refresh },
-      } = await loginMutation({
+      const { user, tokens } = await loginMutation({
         email,
         password,
       }).unwrap();
-      setLocalstorage('accessToken', access);
-      setLocalstorage('refreshToken', refresh);
-      push(ROUTES.CURRENT_USER);
+      logInUser(user, tokens);
     } catch (err) {
       const { data } = err;
       setErrors({
