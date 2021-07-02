@@ -5,7 +5,7 @@ import Header from 'components/shared/Header/Header';
 import classes from './Layouts.module.scss';
 
 type PropsType = {
-  children: JSX.Element[] | JSX.Element;
+  children: JSX.Element[] | JSX.Element | string;
   hideHeaderSideMenu?: boolean;
 };
 
