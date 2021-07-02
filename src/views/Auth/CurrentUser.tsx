@@ -10,8 +10,18 @@ import classes from './Auth.module.scss';
 const CurrentUser: FunctionComponent = () => {
   const { isLoading, error, data } = useCurrentUserQuery();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error</div>;
+  if (isLoading)
+    return (
+      <SimplePageLayout>
+        <div className={classes.auth}>Loading...</div>
+      </SimplePageLayout>
+    );
+  if (error)
+    return (
+      <SimplePageLayout>
+        <div className={classes.auth}>Error</div>
+      </SimplePageLayout>
+    );
 
   return (
     <SimplePageLayout>

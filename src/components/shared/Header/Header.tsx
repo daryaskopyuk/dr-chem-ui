@@ -34,9 +34,9 @@ const defaultHeaderItems: NavigationItem[] = [
     isShown: true,
   },
   {
-    key: 'groups',
-    name: 'Groups',
-    link: ROUTES.PLACEHOLDER_USERS,
+    key: 'asteroids',
+    name: 'Asteroids',
+    link: ROUTES.ASTEROIDS,
     isShown: true,
   },
 ];

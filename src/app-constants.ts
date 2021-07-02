@@ -12,6 +12,7 @@ export const ROUTES = {
   CURRENT_USER: '/auth/current-user',
   DATAROBOT_OAUTH_CALLBACK: '/auth/oauth/dr-callback',
   PLACEHOLDER_USERS: '/placeholder-users',
+  ASTEROIDS: '/asteroids',
 };
 
 export const API_ERROR_CODES = {
