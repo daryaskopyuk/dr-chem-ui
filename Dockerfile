@@ -5,9 +5,9 @@ COPY package.json yarn.lock ./
 RUN yarn
 COPY . ./
 
-ARG REACT_APP_API_URL="https://victor-borshak-be-hackathon-boilerplate-staging.sandbox.solutions.drdev.io"
-ARG REACT_APP_DATAROBOT_OAUTH_CLIENT_ID="MHDAtbiyhqOB9FVyeNxr1Snj6Y484wmY"
-ARG REACT_APP_DATAROBOT_OAUTH_AUTHORIZE_URL="https://staging.datarobot.com/oauth/authenticate"
+ARG REACT_APP_API_URL
+
+RUN echo "Print var1 $REACT_APP_API_URL"
 
 RUN yarn build
 

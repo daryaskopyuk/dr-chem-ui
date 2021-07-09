@@ -8,6 +8,10 @@ import { addLocale, useLocale as setLocale, LocaleData } from 'ttag';
 import langUk from './i18n/uk.po.json';
 import langRu from './i18n/ru.po.json';
 
+import {LOCALES} from './app-constants';
+
+const {EN} = LOCALES;
+
 const LOCALE_KEY = '__locale';
 const locales: Record<string, LocaleData> = {
   uk: langUk,
@@ -22,7 +26,7 @@ export const getLocale = () => {
   let currentLocale = localStorage.getItem(LOCALE_KEY);
 
   if (!currentLocale || !locales[currentLocale]) {
-    currentLocale = 'en';
+    currentLocale = EN;
     saveLocale(currentLocale);
   }
 

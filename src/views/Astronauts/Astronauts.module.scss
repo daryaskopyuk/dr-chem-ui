@@ -1,7 +1,13 @@
-.asteroids {
+.astronauts {
   display: flex;
   flex-direction: column;
   flex: 1;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   pre {
     max-width: 95vw;

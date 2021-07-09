@@ -67,6 +67,21 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+
+### `yarn translations:update`/`yarn translations:update`
+
+We have enabled localizations in the app using [ttag](https://ttag.js.org/docs/quickstart.html). To update `.po` files you can run `yarn translations:update`
+this script will execute: `npx ttag-cli update src/i18n/uk.po` and for other languages.
+
+
+### `yarn translations:po2json`/`yarn translations:po2json`
+
+To load translations from `.po` files to `json` you can run `yarn translations:update`
+this script will execute: `npx ttag-cli po2json src/i18n/ru.po > src/i18n/ru.po.json` and for other languages. 
+
+**Note: `translations` commands update and load translations only for languages that were added. Please, extend `/i18n` by files for languages that you need and extend translations commands!**
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

@@ -7,22 +7,110 @@ msgstr ""
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/components/no-match/NoMatch.tsx:15
+#: src/views/NoMatch/NoMatch.tsx:21
 msgid "404 Not Found"
 msgstr "404 Не найдено"
 
-#: src/components/no-match/NoMatch.tsx:17
+#: src/views/NoMatch/NoMatch.tsx:25
 msgid "Sorry, but we can't display the page you requested."
 msgstr "Извините, но мы не можем отобразить запрашиваемую страницу."
 
-#: src/components/no-match/NoMatch.tsx:24
+#: src/views/NoMatch/NoMatch.tsx:32
 msgid "Go to Homepage"
 msgstr "Перейти на Домашнюю страницу"
 
-#: src/components/home/Home.tsx:14
-msgid "CRA DataRobot Template"
-msgstr "CRA DataRobot Шаблон"
+#: src/views/Home/Home.tsx:48
+msgid "Welcome to UI App Template!"
+msgstr "Добро пожаловать на UI App Template!"
 
-#: src/components/home/Home.tsx:22
-msgid "Our repo on GitHub"
-msgstr "Наш репозиторий на GitHub"
+#: src/views/Home/Home.tsx:78
+msgid "Our repo on GitLab"
+msgstr "Наш репозиторий на GitLab"
+
+#: src/components/shared/Header/Header.tsx:95
+#: src/views/Auth/LoginWithDataRobot.tsx:27
+msgid "Login"
+msgstr "Войти"
+
+#: src/components/shared/Loader/Loader.tsx:9
+msgid "Loading..."
+msgstr "Загружается..."
+
+#: src/views/Home/Home.tsx:44
+msgid "Hello"
+msgstr "Привет"
+
+#: src/views/Auth/LoginWithDataRobot.tsx:39
+msgid "Login with DataRobot"
+msgstr "Вход через DataRobot"
+
+#: src/views/Auth/LoginWithDataRobot.tsx:44
+msgid "Could not fetch DataRobot authentication URL"
+msgstr "Не удалось получить URL утентификации DataRobot"
+
+#: src/views/Astronauts/Astronauts.tsx:29
+msgid "Some of these people could be astronauts..."
+msgstr "Некоторые из этиз людей могли бы быть космонавтами ..."
+
+#: src/views/Asteroids/Asteroids.tsx:58
+msgid "Beware of the asteroids ..."
+msgstr "Осторожно, астероиды ..."
+
+#: src/views/Astronauts/All.tsx:29
+#: src/views/Astronauts/Astronauts.tsx:14
+msgid "All"
+msgstr "Все"
+
+#: src/views/Astronauts/Astronauts.tsx:15
+#: src/views/Astronauts/ById.tsx:31
+msgid "By Id"
+msgstr "По Id"
+
+#: src/views/Astronauts/Astronauts.tsx:16
+#: src/views/Astronauts/ByUsername.tsx:31
+msgid "By Username"
+msgstr "По Username"
+
+#: src/views/Asteroids/Asteroids.tsx:46
+#: src/views/Astronauts/All.tsx:20
+#: src/views/Astronauts/ById.tsx:22
+#: src/views/Astronauts/ByUsername.tsx:22
+msgid "Could not fetch the data"
+msgstr "Невозможно загрузить данные"
+
+#: src/views/Home/Home.tsx:53
+msgid "Important"
+msgstr "Важно"
+
+#: src/views/Home/Home.tsx:56
+msgid "This application is pointed at a back end server running at"
+msgstr "Это приложение сконфигурировано работать с сервером работающим на"
+
+#: src/views/Home/Home.tsx:59
+msgid "Use REACT_APP_API_URL variable to change this."
+msgstr "Используйте переменную REACT_APP_API_URL чтобы изменить это."
+
+#: src/views/Asteroids/Asteroids.tsx:49
+#: src/views/Astronauts/All.tsx:23
+#: src/views/Astronauts/ById.tsx:25
+#: src/views/Astronauts/ByUsername.tsx:25
+#: src/views/Auth/LoginWithDataRobot.tsx:47
+#: src/views/Auth/OAuth/DataRobotCallback.tsx:64
+msgid "Please check if application's back end is up and running."
+msgstr "Пожалуйста проверьте работоспособность сервера."
+
+#: src/views/Auth/LoginWithDataRobot.tsx:52
+msgid "Having trouble? We're here to help!"
+msgstr "Проблема? Мы готовы помочь!"
+
+#: src/components/shared/Header/Header.tsx:49
+msgid "Asteroids"
+msgstr "Астероиды"
+
+#: src/components/shared/Header/Header.tsx:55
+msgid "Astronauts"
+msgstr "Космонавты"
+
+#: src/components/shared/Header/Header.tsx:104
+msgid "Log Out"
+msgstr "Выход"

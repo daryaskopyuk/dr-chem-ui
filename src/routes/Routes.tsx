@@ -2,21 +2,26 @@ import { FunctionComponent, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
-import PrivateRoute from 'routes/PrivateRoute';
-import SimplePageLayout from 'components/layouts/SimplePageLayout';
+import ProtectedRoute from 'routes/ProtectedRoute';
+import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
+import { Loader } from 'components/shared/Loader/Loader';
 
-import Home from 'views/Home/Home';
 import AuthRoutes from 'views/Auth/AuthRoutes';
+import Home from 'views/Home/Home';
 
-const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
-const PlaceholderUsers = lazy(
-  () => import('views/Placeholder/PlaceholderUsers')
-);
+const Astronauts = lazy(() => import('views/Astronauts/Astronauts'));
 const Asteroids = lazy(() => import('views/Asteroids/Asteroids'));
+const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
 
 const Routes: FunctionComponent = () => (
   <Router>
-    <Suspense fallback={<SimplePageLayout>Loading...</SimplePageLayout>}>
+    <Suspense
+      fallback={
+        <SimplePageLayout>
+          <Loader />
+        </SimplePageLayout>
+      }
+    >
       <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home />
@@ -24,9 +29,9 @@ const Routes: FunctionComponent = () => (
         <Route path={ROUTES.AUTH}>
           <AuthRoutes />
         </Route>
-        <PrivateRoute exact path={ROUTES.PLACEHOLDER_USERS}>
-          <PlaceholderUsers />
-        </PrivateRoute>
+        <ProtectedRoute exact path={ROUTES.ASTRONAUTS}>
+          <Astronauts />
+        </ProtectedRoute>
         <Route exact path={ROUTES.ASTEROIDS}>
           <Asteroids />
         </Route>

@@ -1,23 +1,23 @@
 import { FunctionComponent } from 'react';
-import Link from 'components/shared/Link/Link';
+import { Link } from 'components/shared/Link/Link';
 import defaultLogo from 'assets/images/dr-logo-for-dark-bg.svg';
 
-type PropsType = {
+export interface NavigationLogoProps {
   className: string | undefined;
   link: string | null;
   isDisabled: boolean;
   imageUrl: string | null | undefined;
-};
+}
 
-const NavigationLogo: FunctionComponent<PropsType> = ({
+export const NavigationLogo: FunctionComponent<NavigationLogoProps> = ({
   className,
   link,
   isDisabled,
   imageUrl,
-}: PropsType) => {
+}: NavigationLogoProps) => {
   const logoHref = isDisabled ? null : link;
   return (
-    <Link className={className} to={logoHref || ''}>
+    <Link className={className} to={logoHref || ''} testId="dr-logo">
       <img
         className="dr-logo"
         src={imageUrl || defaultLogo}
@@ -26,5 +26,3 @@ const NavigationLogo: FunctionComponent<PropsType> = ({
     </Link>
   );
 };
-
-export default NavigationLogo;

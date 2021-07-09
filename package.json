@@ -36,7 +36,9 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --fix  .",
     "cypress": "CYPRESS_coverage=false npx cypress open",
-    "cypress:coverage": "npx cypress open"
+    "cypress:coverage": "npx cypress open",
+    "translations:update": "npx ttag-cli update src/i18n/uk.po src/ --discover=t && npx ttag-cli update src/i18n/ru.po src/ --discover=t",
+    "translations:po2json": "npx ttag-cli po2json src/i18n/ru.po > src/i18n/ru.po.json && npx ttag-cli po2json src/i18n/uk.po > src/i18n/uk.po.json"
   },
   "eslintConfig": {
     "extends": "react-app"

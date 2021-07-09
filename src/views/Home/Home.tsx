@@ -1,13 +1,17 @@
 import { FunctionComponent, useState } from 'react';
-import { t, useLocale as setLocale } from 'ttag';
+import { t } from 'ttag';
 import { Tabs } from '@datarobot/design-system/js/tabs';
 import { Button } from '@datarobot/design-system/js/button';
-import '@datarobot/design-system/styles/tabs.css';
+import { Alert, ALERT_TYPES } from '@datarobot/design-system/js/alert';
 import { ReactComponent as AppLogo } from 'assets/images/app-logo.svg';
-import { saveLocale, getLocale } from 'i18n-init';
+import { getLocale } from 'i18n-init';
 
-import SimplePageLayout from 'components/layouts/SimplePageLayout';
+import { DEFAULT_APP_API_URL, APP_API_URL } from 'app-constants';
+import useTranslations from 'hooks/useTranslations';
+import useCurrentUser from 'hooks/useCurrentUser';
+import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
+import '@datarobot/design-system/styles/tabs.css';
 import classes from './Home.module.scss';
 
 const tabs = [
@@ -16,14 +20,16 @@ const tabs = [
   { key: 'ru', label: 'RU', testId: 'tab-locale-ru' },
 ];
 
+const applicationServerURL = APP_API_URL || DEFAULT_APP_API_URL;
+
 const Home: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(getLocale());
+  const { currentUser, isSignedIn } = useCurrentUser();
+  const { setLocale } = useTranslations();
 
   const onTabChange = (tab: any) => {
     const localeCode = tab.key;
-
     setActiveTab(localeCode);
-    saveLocale(localeCode);
     setLocale(localeCode);
   };
 
@@ -32,14 +38,34 @@ const Home: FunctionComponent = () => {
       <div className={classes.home}>
         <div className={classes.homeHeader}>
           <AppLogo className="margin-bottom-5" test-id="app-logo" />
-          <h1 className="page-header app-heading">{t`Welcome to UI App Template!`}</h1>
+          {isSignedIn ? (
+            <>
+              <h1>
+                {t`Hello`}, {currentUser.name}!
+              </h1>
+            </>
+          ) : (
+            <h1>{t`Welcome to UI App Template!`}</h1>
+          )}
+
+          <Alert
+            className={classes.alert}
+            header={t`Important`}
+            type={ALERT_TYPES.INFO}
+          >
+            {t`This application is pointed at a back end server running at`}{' '}
+            <strong>{applicationServerURL}</strong>
+            <br />
+            {t`Use REACT_APP_API_URL variable to change this.`}
+          </Alert>
+
           <Tabs
             options={tabs}
             onSelect={onTabChange}
             selectedKey={activeTab}
             groupIdentifier="tabs-locale"
             testId="tabs-locale"
-            className="margin-bottom-5"
+            className="margin-bottom-5 margin-top-5"
           />
           <Button
             className={classes.repoLink}

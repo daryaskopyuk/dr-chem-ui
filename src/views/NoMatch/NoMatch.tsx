@@ -4,7 +4,7 @@ import { t } from 'ttag';
 import { Link } from 'react-router-dom';
 import { ReactComponent as PowerOutageImage } from 'assets/images/power-outage-image.svg';
 
-import SimplePageLayout from 'components/layouts/SimplePageLayout';
+import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
 import classes from './NoMatch.module.scss';
 
