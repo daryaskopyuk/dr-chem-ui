@@ -2,24 +2,26 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 import { setupListeners } from '@reduxjs/toolkit/query/react';
-import { externalApi } from 'services/externalApi';
-import { appApi } from 'services/appApi';
+import { astronautsApi } from 'services/astronautsApi';
+import { applicationApi } from 'services/applicationApi';
 
 import currentUser from './currentUser';
+import locale from './locale';
 
 const store = configureStore({
   reducer: {
     // Add the generated rtk-query reducer(s) as a specific top-level slice
-    [externalApi.reducerPath]: externalApi.reducer,
-    [appApi.reducerPath]: appApi.reducer,
+    [astronautsApi.reducerPath]: astronautsApi.reducer,
+    [applicationApi.reducerPath]: applicationApi.reducer,
     currentUser,
+    locale,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(externalApi.middleware)
-      .concat(appApi.middleware),
+      .concat(astronautsApi.middleware)
+      .concat(applicationApi.middleware),
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

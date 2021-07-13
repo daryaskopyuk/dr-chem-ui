@@ -1,56 +1,63 @@
 import { FunctionComponent } from 'react';
 import { t } from 'ttag';
 import { Button } from '@datarobot/design-system/js/button';
+import { Alert, ALERT_TYPES } from '@datarobot/design-system/js/alert';
+
+import { useGetAuthorizeUrlQuery } from 'services/applicationApi';
 
 import { ROUTES } from 'app-constants';
-import SimplePageLayout from 'components/layouts/SimplePageLayout';
+import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
 import classes from './Auth.module.scss';
-
-const generateRandomString = (length = 20) =>
-  Math.random().toString(20).substr(2, length);
 
 const clientBaseUrl = window.location.port
   ? `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
   : `${window.location.protocol}//${window.location.hostname}`;
 
-const oauthAuthorizeURL = process.env.REACT_APP_DATAROBOT_OAUTH_AUTHORIZE_URL;
-const oauthClientId = process.env.REACT_APP_DATAROBOT_OAUTH_CLIENT_ID;
-
-const getAuthorizeUrl = () => {
-  const responseType = 'response_type=code';
-  const clientId = `client_id=${oauthClientId}`;
+const getRedirectUriComponent = () => {
   const redirectUri = `redirect_uri=${clientBaseUrl}${ROUTES.DATAROBOT_OAUTH_CALLBACK}`;
-  const scope = `scope=${encodeURIComponent('openid email profile scope:all')}`;
-  const state = `state=${encodeURIComponent(generateRandomString())}`;
-  const nonce = `nonce=${encodeURIComponent(generateRandomString())}`;
-  return `${oauthAuthorizeURL}?${responseType}&${clientId}&${redirectUri}&${scope}&${state}&${nonce}`;
+  return redirectUri;
 };
 
-const LoginWithDataRobot: FunctionComponent = () => (
-  <SimplePageLayout hideHeaderSideMenu>
-    <div className={classes.auth}>
-      <div className={classes.authHeader}>
-        <h1 className="page-header app-heading">{t`Login`}</h1>
+const LoginWithDataRobot: FunctionComponent = () => {
+  const { isLoading, error, data } = useGetAuthorizeUrlQuery();
+  return (
+    <SimplePageLayout hideAuthButtons>
+      <div className={classes.auth}>
+        <h1>{t`Login`}</h1>
         <div className={classes.authSection}>
-          <div className={classes.sectionContent}>
-            <Button
-              onClick={() => {
-                window.location.href = getAuthorizeUrl();
-              }}
-            >
-              Login with DataRobot
-            </Button>
+          <div className={classes.content}>
+            {!error && (
+              <Button
+                testId="login-button"
+                isDisabled={isLoading || !!error}
+                onClick={() => {
+                  window.location.assign(
+                    `${data?.authUrl}&${getRedirectUriComponent()}`
+                  );
+                }}
+              >
+                {t`Login with DataRobot`}
+              </Button>
+            )}
+            {!!error && (
+              <Alert
+                header={t`Could not fetch DataRobot authentication URL`}
+                type={ALERT_TYPES.FAILURE}
+              >
+                {t`Please check if application's back end is up and running.`}
+              </Alert>
+            )}
           </div>
-          <div className={classes.sectionFooter}>
-            Having trouble? We&apos;re here to help!
+          <div className={classes.footer}>
+            {t`Having trouble? We're here to help!`}
             <br />
             <a href="mailto:support@datarobot.com">support@datarobot.com</a>
           </div>
         </div>
       </div>
-    </div>
-  </SimplePageLayout>
-);
+    </SimplePageLayout>
+  );
+};
 
 export default LoginWithDataRobot;

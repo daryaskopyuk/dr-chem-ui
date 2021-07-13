@@ -1,27 +1,28 @@
 import { FunctionComponent } from 'react';
 import { Link as LinkComp } from 'react-router-dom';
 
-type PropsType = {
+export interface LinkProps {
   to: string;
   className?: string;
   children: JSX.Element[] | JSX.Element | string;
+  testId?: string;
   onClick?: () => void;
-};
+}
 
-const Link: FunctionComponent<PropsType> = ({
+export const Link: FunctionComponent<LinkProps> = ({
   to,
   children,
   className,
+  testId,
   onClick,
-}: PropsType) => (
-  <LinkComp to={to} className={className} onClick={onClick}>
+}: LinkProps) => (
+  <LinkComp to={to} className={className} test-id={testId} onClick={onClick}>
     {children}
   </LinkComp>
 );
 
 Link.defaultProps = {
   className: '',
+  testId: '',
   onClick: () => null,
 };
-
-export default Link;
