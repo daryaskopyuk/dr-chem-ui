@@ -1332,7 +1332,7 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.14.6"
   resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
   integrity sha1-U1IDvAiS78fexgvcJ7Ls9uQJBi0=
@@ -7001,6 +7001,13 @@ hex-color-regex@^1.1.0:
   resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
+history@5.0.0:
+  version "5.0.0"
+  resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/history/-/history-5.0.0.tgz#0cabbb6c4bbf835addb874f8259f6d25101efd08"
+  integrity sha1-DKu7bEu/g1rduHT4JZ9tJRAe/Qg=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 history@^4.9.0:
   version "4.10.1"
   resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
@@ -10056,6 +10063,11 @@ package-hash@^4.0.0:
   version "4.0.0"
   resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/package-hash/-/package-hash-4.0.0.tgz#3537f654665ec3cc38827387fc904c163c54f506"
   integrity sha1-NTf2VGZew8w4gnOH/JBMFjxU9QY=
+  dependencies:
+    graceful-fs "^4.1.15"
+    hasha "^5.0.0"
+    lodash.flattendeep "^4.4.0"
+    release-zalgo "^1.0.0"
 
 pako@~1.0.5:
   version "1.0.11"
