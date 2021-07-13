@@ -2,14 +2,15 @@ import { FunctionComponent, useState, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
-import Link from 'components/shared/Link/Link';
+import { Link } from 'components/shared/Link/Link';
 import useCurrentUser from 'hooks/useCurrentUser';
 import useResponsive from 'hooks/useResponsive';
+import useTranslations from 'hooks/useTranslations';
 import { ROUTES } from 'app-constants';
 
 import { ReactComponent as MenuIcon } from 'assets/images/hamburger.svg';
-import Drawer from 'components/shared/Drawer/Drawer';
-import NavigationLogo from './NavigationLogo';
+import { Drawer } from 'components/shared/Drawer/Drawer';
+import { NavigationLogo } from './NavigationLogo';
 
 import classes from './Header.module.scss';
 
@@ -20,40 +21,44 @@ type NavigationItem = {
   isShown: boolean;
 };
 
-const defaultHeaderItems: NavigationItem[] = [
-  {
-    key: 'asteroids',
-    name: 'Asteroids',
-    link: ROUTES.ASTEROIDS,
-    isShown: true,
-  },
-  {
-    key: 'users',
-    name: 'Users',
-    link: ROUTES.PLACEHOLDER_USERS,
-    isShown: true,
-  },
-];
-
-type PropsType = {
+export interface HeaderProps {
   logoLink?: string;
-  navItems?: NavigationItem[];
   isLogoDisabled?: boolean;
   logoImageUrl?: string | null | undefined;
   hideAuthButtons?: boolean;
-};
+  testId?: string;
+}
 
-const Header: FunctionComponent<PropsType> = ({
+export const Header: FunctionComponent<HeaderProps> = ({
   logoLink,
-  navItems,
   isLogoDisabled,
   logoImageUrl,
   hideAuthButtons,
-}: PropsType) => {
+  testId,
+}: HeaderProps) => {
   const history = useHistory();
   const { isMobile } = useResponsive();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { isSignedIn, logOutUser } = useCurrentUser();
+  const { t } = useTranslations();
+
+  const navItems: NavigationItem[] = useMemo(
+    () => [
+      {
+        key: 'asteroids',
+        name: t`Asteroids`,
+        link: ROUTES.ASTEROIDS,
+        isShown: true,
+      },
+      {
+        key: 'astronauts',
+        name: t`Astronauts`,
+        link: ROUTES.ASTRONAUTS,
+        isShown: true,
+      },
+    ],
+    [t]
+  );
 
   const navitationItems = useMemo(
     () =>
@@ -87,7 +92,7 @@ const Header: FunctionComponent<PropsType> = ({
               history.push(ROUTES.LOGIN);
             }}
           >
-            Login
+            {t`Login`}
           </Button>
         )
       ) : (
@@ -96,14 +101,14 @@ const Header: FunctionComponent<PropsType> = ({
           accentType={ACCENT_TYPES.COMMAND}
           onClick={logOutUser}
         >
-          Log Out
+          {t`Log Out`}
         </Button>
       ),
-    [logOutUser, history, isSignedIn, hideAuthButtons]
+    [logOutUser, history, isSignedIn, hideAuthButtons, t]
   );
 
   return (
-    <div className={classes.headerContainer}>
+    <div className={classes.headerContainer} test-id={testId}>
       <NavigationLogo
         className={classes.navigationLogo}
         link={logoLink || ''}
@@ -143,9 +148,7 @@ const Header: FunctionComponent<PropsType> = ({
 Header.defaultProps = {
   isLogoDisabled: false,
   logoImageUrl: null,
-  navItems: defaultHeaderItems,
   logoLink: ROUTES.HOME,
   hideAuthButtons: false,
+  testId: 'main-header',
 };
-
-export default Header;

@@ -3,17 +3,17 @@ import classNames from 'classnames';
 
 import styles from './Drawer.module.scss';
 
-type PropsType = {
+export interface DrawerProps {
   isOpen: boolean;
   children: JSX.Element[] | JSX.Element;
   onClose: Function;
-};
+}
 
-const Drawer: FunctionComponent<PropsType> = ({
+export const Drawer: FunctionComponent<DrawerProps> = ({
   isOpen,
   children,
   onClose,
-}: PropsType) => {
+}: DrawerProps) => {
   const navContainerRef = useRef<HTMLDivElement>(null);
 
   const handleClick = useCallback(
@@ -35,7 +35,10 @@ const Drawer: FunctionComponent<PropsType> = ({
   }, [handleClick]);
 
   return (
-    <div className={classNames(styles.container, { [styles.closed]: !isOpen })}>
+    <div
+      className={classNames(styles.container, { [styles.closed]: !isOpen })}
+      test-id="side-drawer"
+    >
       <div className={styles.wrapper}>
         <section className={styles.section}>
           <div className={styles.innerContainer}>
@@ -49,6 +52,7 @@ const Drawer: FunctionComponent<PropsType> = ({
                 type="button"
                 className={styles.closeButton}
                 onClick={() => onClose(!isOpen)}
+                test-id="drawer-close-button"
               >
                 <svg
                   className="h-6 w-6"
@@ -76,5 +80,3 @@ const Drawer: FunctionComponent<PropsType> = ({
     </div>
   );
 };
-
-export default Drawer;

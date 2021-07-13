@@ -1,12 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { PlaceholderUser } from 'interfaces/placeholder';
+import { PlaceholderUser } from 'interfaces/external';
 
-// Create one api per server
+// Please create one Api file per service
+
+const SERVICE_BASE_URL = 'https://jsonplaceholder.typicode.com';
+
 // Define a service using a base URL and expected endpoints
-export const externalApi = createApi({
-  reducerPath: 'externalApi',
+export const astronautsApi = createApi({
+  reducerPath: 'astronautsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://jsonplaceholder.typicode.com',
+    baseUrl: SERVICE_BASE_URL,
   }),
   endpoints: (builder) => ({
     getUsers: builder.query<PlaceholderUser, void>({
@@ -27,4 +30,4 @@ export const {
   useGetUsersQuery,
   useGetUsersByIdQuery,
   useGetUsersByUsernameQuery,
-} = externalApi;
+} = astronautsApi;

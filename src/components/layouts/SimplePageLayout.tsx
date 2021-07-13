@@ -1,28 +1,26 @@
 import { FunctionComponent } from 'react';
 
-import Header from 'components/shared/Header/Header';
+import { Header } from 'components/shared/Header/Header';
 
 import classes from './Layouts.module.scss';
 
-type PropsType = {
+export interface SimplePageLayoutProps {
   children: JSX.Element[] | JSX.Element | string;
-  hideHeaderSideMenu?: boolean;
-};
+  hideAuthButtons?: boolean;
+}
 
-const SimplePageLayout: FunctionComponent<PropsType> = ({
+export const SimplePageLayout: FunctionComponent<SimplePageLayoutProps> = ({
   children,
-  hideHeaderSideMenu,
-}: PropsType) => (
+  hideAuthButtons,
+}: SimplePageLayoutProps) => (
   <div className={classes.simplePageLayout}>
     <div className={classes.headerWrapper}>
-      <Header hideAuthButtons={hideHeaderSideMenu} />
+      <Header hideAuthButtons={hideAuthButtons} />
     </div>
     <div className={classes.mainContentWrapper}>{children}</div>
   </div>
 );
 
 SimplePageLayout.defaultProps = {
-  hideHeaderSideMenu: false,
+  hideAuthButtons: false,
 };
-
-export default SimplePageLayout;

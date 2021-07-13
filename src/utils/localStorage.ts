@@ -8,7 +8,10 @@ export const getLocalstorage = (key: string) => {
   return storeExist ? store[key] : null;
 };
 
-export const setLocalstorage = (key: string, val: string | boolean) => {
+export const setLocalstorage = (
+  key: string,
+  val: string | boolean | object
+) => {
   const store = JSON.parse(storage.getItem(storageKey) || '{}');
   const storeExist = !!store;
   if (storeExist) {
@@ -16,6 +19,15 @@ export const setLocalstorage = (key: string, val: string | boolean) => {
     storage.setItem(storageKey, JSON.stringify(store));
   } else {
     storage.setItem(storageKey, JSON.stringify({ [key]: val }));
+  }
+};
+
+export const removeLocalstorage = (key: string) => {
+  const store = JSON.parse(storage.getItem(storageKey) || '{}');
+  const storeExist = !!store;
+  if (storeExist) {
+    delete store[key];
+    storage.setItem(storageKey, JSON.stringify(store));
   }
 };
 

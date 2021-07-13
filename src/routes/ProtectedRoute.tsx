@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import { Route, Redirect, useLocation } from 'react-router-dom';
+import { setLocalstorage, removeLocalstorage } from 'utils/localStorage';
 import useCurrentUser from 'hooks/useCurrentUser';
-import { ROUTES } from 'app-constants';
+import { ROUTES, LOCALSTORAGE_ITEMS } from 'app-constants';
 
-type PrivateRouteProps = {
+const { LOGIN_FROM_LOCATION } = LOCALSTORAGE_ITEMS;
+
+type ProtectedRouteProps = {
   path: string;
   exact?: boolean;
   component?: React.FC;
@@ -10,15 +14,24 @@ type PrivateRouteProps = {
   children?: JSX.Element[] | JSX.Element;
 };
 
-const PrivateRoute = ({
+const ProtectedRoute = ({
   path,
   exact,
   component,
   render,
   children,
-}: PrivateRouteProps) => {
+}: ProtectedRouteProps) => {
   const location = useLocation();
   const { isSignedIn } = useCurrentUser();
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      const currentRoute = `${location.pathname}${location.search}`;
+      setLocalstorage(LOGIN_FROM_LOCATION, currentRoute);
+    } else {
+      removeLocalstorage(LOGIN_FROM_LOCATION);
+    }
+  }, [isSignedIn, location]);
 
   return isSignedIn ? (
     <Route path={path} exact={exact} component={component} render={render}>
@@ -28,17 +41,16 @@ const PrivateRoute = ({
     <Redirect
       to={{
         pathname: ROUTES.LOGIN,
-        state: { from: `${location.pathname}${location.search}` },
       }}
     />
   );
 };
 
-PrivateRoute.defaultProps = {
+ProtectedRoute.defaultProps = {
   exact: false,
   render: undefined,
   component: undefined,
   children: [],
 };
 
-export default PrivateRoute;
+export default ProtectedRoute;
