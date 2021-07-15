@@ -2,6 +2,7 @@ import { FunctionComponent, lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
+import { useAppDispatch } from 'store/store';
 import ProtectedRoute from 'routes/ProtectedRoute';
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 import { Loader } from 'components/shared/Loader/Loader';
@@ -18,6 +19,7 @@ const Asteroids = lazy(() => import('views/Asteroids/Asteroids'));
 const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
 
 const Routes: FunctionComponent = () => {
+  const dispatch = useAppDispatch();
   const { isSignedIn } = useCurrentUser();
   const { data } = useGetUserInfoQuery(undefined, { skip: !isSignedIn });
 
@@ -25,9 +27,9 @@ const Routes: FunctionComponent = () => {
     const profile = data?.profile;
     if (profile) {
       // update profile
-      setCurrentUser(profile);
+      dispatch(setCurrentUser(profile));
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   return (
     <Router>
