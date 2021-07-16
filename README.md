@@ -227,6 +227,33 @@ export const astronautsApi = createApi({
     getUsersByUsername: builder.query<PlaceholderUser, string>({
       query: (username) => `/users?username=${username}`,
     }),
+    addUser: builder.mutation<PlaceholderUser, Partial<PlaceholderUser>>({
+      query(body) {
+        return {
+          url: `/users`,
+          method: 'POST',
+          body,
+        };
+      },
+    }),
+    updateUser: builder.mutation<PlaceholderUser, Partial<PlaceholderUser>>({
+      query(data) {
+        const { id, ...body } = data;
+        return {
+          url: `/users/${id}`,
+          method: 'PUT',
+          body,
+        };
+      },
+    }),
+    deleteUser: builder.mutation<{ success: boolean; id: number }, number>({
+      query(id) {
+        return {
+          url: `/users/${id}`,
+          method: 'DELETE',
+        };
+      },
+    }),
   }),
 });
 
@@ -236,6 +263,9 @@ export const {
   useGetUsersQuery,
   useGetUsersByIdQuery,
   useGetUsersByUsernameQuery,
+  useAddUserMutation,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
 } = astronautsApi;
 ```
 
@@ -245,7 +275,6 @@ Now, the exported hooks can be used in the React components which need to fetch 
 ```js
 import { FunctionComponent } from 'react';
 import { useGetUsersQuery } from 'services/astronautsApi';
-
 
 const SomeComponent: FunctionComponent = () => {
   // Using a query hook automatically fetches data and returns query values
@@ -257,6 +286,33 @@ const SomeComponent: FunctionComponent = () => {
   return (
     <div>
       Data:<pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+};
+
+```
+
+`SomeComponent.tsx`
+```js
+import { FunctionComponent } from 'react';
+import { useAddUserMutation } from 'services/astronautsApi';
+
+const SomeComponent: FunctionComponent = () => {
+  const [addUserMutation, { isLoading }] = useAddUserMutation();
+  const addUser = async () => {
+    try {
+      const { user } = await addUserMutation({
+        email: 'email@example.com',
+      }).unwrap();
+      console.log('User created', user);
+    } catch (err) {
+      console.log('Error', err);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={addUser} disabled={isLoading}>Add user</button>
     </div>
   );
 };
