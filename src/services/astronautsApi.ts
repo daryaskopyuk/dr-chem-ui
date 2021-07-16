@@ -21,6 +21,33 @@ export const astronautsApi = createApi({
     getUsersByUsername: builder.query<PlaceholderUser, string>({
       query: (username) => `/users?username=${username}`,
     }),
+    addUser: builder.mutation<PlaceholderUser, Partial<PlaceholderUser>>({
+      query(body) {
+        return {
+          url: `/users`,
+          method: 'POST',
+          body,
+        };
+      },
+    }),
+    updateUser: builder.mutation<PlaceholderUser, Partial<PlaceholderUser>>({
+      query(data) {
+        const { id, ...body } = data;
+        return {
+          url: `/users/${id}`,
+          method: 'PUT',
+          body,
+        };
+      },
+    }),
+    deleteUser: builder.mutation<{ success: boolean; id: number }, number>({
+      query(id) {
+        return {
+          url: `/users/${id}`,
+          method: 'DELETE',
+        };
+      },
+    }),
   }),
 });
 
@@ -30,4 +57,7 @@ export const {
   useGetUsersQuery,
   useGetUsersByIdQuery,
   useGetUsersByUsernameQuery,
+  useAddUserMutation,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
 } = astronautsApi;

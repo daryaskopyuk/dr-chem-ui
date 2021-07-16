@@ -54,7 +54,7 @@ In most cases, when deployed to Stage/Production environments, you'll need to us
 * [DataRobot Design System](#datarobot-design-system)
 * [Modules CSS Styling](#css-modules)
 * [Redux Toolkit State Management](#redux-toolkit-state-management)
-* [Data Fetching & Caching](#data-fetching-caching)
+* [Data Fetching/Updating & Caching](#data-fetchingupdating-caching)
 * [Authenticate with DataRobot](#authenticate-with-datarobot)
 * [Public/Protected Routes](#publicprotected-routes)
 * [Responsiveness Support](#responsiveness-support)
@@ -191,7 +191,7 @@ To learn more about Redux Toolkit usage, check the following -
 * [Getting Started with Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 * [createSlice doc](https://redux-toolkit.js.org/api/createslice)
 
-### Data Fetching & Caching
+### Data Fetching/Updating & Caching
 
 TO simplify feching data in the application, [Redux Toolkit Query](https://redux-toolkit.js.org/rtk-query/overview) is used.
 
