@@ -4,12 +4,14 @@ UI Application Template is boilerplate React app, which was created to help quic
 
 ## Quick Start
 
-Here's a video on how to install and start using UI Application Template - (link video here).
+Here's a video on how to install and start using UI Application Template - [Watch Quick Start Video](https://drive.google.com/file/d/1k2-z3dcE9EliD6oSG_Vxtut1ij5LMG6E/view?usp=sharing).
 
 ## Installation
 
 To install UI Application Template app, create a new GitLab project using Hackathon 2021 UI App Template as a template.
 Then, clone the new repository and `cd` into it in the terminal application.
+
+**Important** Make sure you have `node` v.>=12 installed.
 
 Execute -
 
