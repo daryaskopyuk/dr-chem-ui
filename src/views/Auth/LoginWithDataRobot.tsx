@@ -5,17 +5,13 @@ import { Alert, ALERT_TYPES } from '@datarobot/design-system/js/alert';
 
 import { useGetAuthorizeUrlQuery } from 'services/applicationApi';
 
-import { ROUTES } from 'app-constants';
+import { CLIENT_BASE_URL, ROUTES } from 'app-constants';
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
 import classes from './Auth.module.scss';
 
-const clientBaseUrl = window.location.port
-  ? `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
-  : `${window.location.protocol}//${window.location.hostname}`;
-
 const getRedirectUriComponent = () => {
-  const redirectUri = `redirect_uri=${clientBaseUrl}${ROUTES.DATAROBOT_OAUTH_CALLBACK}`;
+  const redirectUri = `redirect_uri=${CLIENT_BASE_URL}${ROUTES.DATAROBOT_OAUTH_CALLBACK}`;
   return redirectUri;
 };
 

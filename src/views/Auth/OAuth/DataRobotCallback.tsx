@@ -6,7 +6,7 @@ import { Alert, ALERT_TYPES } from '@datarobot/design-system/js/alert';
 import { useAuthenticateMutation } from 'services/applicationApi';
 import useCurrentUser from 'hooks/useCurrentUser';
 
-import { ROUTES } from 'app-constants';
+import { CLIENT_BASE_URL, ROUTES } from 'app-constants';
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
 import classes from '../Auth.module.scss';
@@ -17,6 +17,7 @@ const Callback: FunctionComponent = () => {
   const params = new URLSearchParams(search);
   const code = params.get('code');
   const state = params.get('state');
+  const redirectUri = `${CLIENT_BASE_URL}${ROUTES.DATAROBOT_OAUTH_CALLBACK}`;
 
   const [authenticateMutation, { error }] = useAuthenticateMutation();
 
@@ -24,6 +25,7 @@ const Callback: FunctionComponent = () => {
     authenticateMutation({
       code,
       state,
+      redirect_uri: redirectUri,
     })
       .unwrap()
       .then((data) => {
@@ -44,7 +46,7 @@ const Callback: FunctionComponent = () => {
       .catch(() => {
         // TODO Ignore, since we're already using error from the hook
       });
-  }, [authenticateMutation, logInUser, code, state]);
+  }, [authenticateMutation, logInUser, code, state, redirectUri]);
 
   useEffect(() => {
     if (code && state) {

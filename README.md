@@ -23,6 +23,10 @@ This will install all dependencies and start the application in your web browser
 
 UI Application Template application works best when it's configured and pointed to a backend application created based on [Hackathon 2021 App Template](https://gitlab.solutions.drdev.io/hackathon-2021/hackathon-2021-app-template)
 
+### Programming Language
+
+It's **TypeScript**, but you can use JS if you wish (this will suppress linter errors & warnings). Simply create `*.js`, `*.jsx` files
+
 ### Using When Running Locally
 
 If you want to use UI Application Template together with a backend application both running on your local environment, there's no need to configure the UI app. The app is configured to pass all unknown requests to port 5000. And since the backend app bootsrapped from [Hackathon 2021 App Template](https://gitlab.solutions.drdev.io/hackathon-2021/hackathon-2021-app-template) usually runs on port 5000, everything should just work.
@@ -268,7 +272,7 @@ The application includes a built-in route with a login page `/auth/login` used t
 
 **Important** Login with DataRobot works only when the application is pointed to a working backend server bootsrapped from [Hackathon 2021 App Template](https://gitlab.solutions.drdev.io/hackathon-2021/hackathon-2021-app-template). If this condition is not met, the Login with DataRobot button always remains disabled or the error message is shown on the page.
 
-No additional configuration is required in the UI app for Login with DataRobot to work, except providing a valid `REACT_APP_API_URL` variable. However, some addition configuration may be required on the backend side. Please check the details on how to do that - link to insctuction here
+No additional configuration is required in the UI app for Login with DataRobot to work, except providing a valid `REACT_APP_API_URL` variable. However, some addition configuration may be required on the backend side. Please check the details on how to do that - [Backend App Template Setup](https://gitlab.solutions.drdev.io/hackathon-2021/hackathon-2021-app-template#setup)
 
 **Please note** In case the application is properly configured to work with the backend server, the UI app will automatically handle session managemet (handling auth tokens expriration and refreshing them). User will get logged out automatically in case auth token fails to refresh for whatever reason.
 
