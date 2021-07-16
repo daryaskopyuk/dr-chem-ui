@@ -72,7 +72,7 @@ const Home: FunctionComponent = () => {
             className={classes.repoLink}
             onClick={() => {
               window.location.href =
-                'https://gitlab.solutions.drdev.io/solutions-platform2/example-projects/cra-template-app';
+                'https://gitlab.solutions.drdev.io/hackathon-2021/hackathon-2021-ui-app-template';
             }}
             testId="app-link"
           >
