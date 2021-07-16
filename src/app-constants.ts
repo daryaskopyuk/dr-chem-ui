@@ -29,3 +29,7 @@ export const LOCALES = {
   RU: 'ru',
   UK: 'uk',
 };
+
+export const CLIENT_BASE_URL = window.location.port
+  ? `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
+  : `${window.location.protocol}//${window.location.hostname}`;
