@@ -10,6 +10,7 @@ export const ROUTES = {
   AUTH: '/auth',
   LOGIN: '/auth/login',
   DATAROBOT_OAUTH_CALLBACK: '/auth/oauth/dr-callback',
+  DR_CHEM: '/drchem'
 };
 
 /* Known error codes returned in 'code' field by server */

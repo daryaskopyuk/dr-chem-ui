@@ -17,6 +17,7 @@ import Home from 'views/Home/Home';
 const Astronauts = lazy(() => import('views/Astronauts/Astronauts'));
 const Asteroids = lazy(() => import('views/Asteroids/Asteroids'));
 const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
+const DrChem = lazy(() => import('views/DrChem/DrChem'));
 
 const Routes: FunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -52,6 +53,9 @@ const Routes: FunctionComponent = () => {
           </ProtectedRoute>
           <Route exact path={ROUTES.ASTEROIDS}>
             <Asteroids />
+          </Route>
+          <Route path={ROUTES.DR_CHEM}>
+            <DrChem />
           </Route>
           <Route path="*">
             <NoMatch />

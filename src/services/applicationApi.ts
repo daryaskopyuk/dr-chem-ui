@@ -104,7 +104,11 @@ export const applicationApi = createApi({
       query: () => '/user-info',
     }),
     getAsteroids: builder.query<any, void>({
-      query: () => '/detect',
+      query: (payload) => ({
+        url: '/projects/',
+        method: 'POST',
+        body: payload,
+      }),
     }),
     authenticate: builder.mutation<any, any>({
       query: (payload) => ({

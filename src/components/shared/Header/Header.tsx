@@ -45,6 +45,12 @@ export const Header: FunctionComponent<HeaderProps> = ({
   const navItems: NavigationItem[] = useMemo(
     () => [
       {
+        key: 'dr-chem',
+        name: t`DR Chem`,
+        link: ROUTES.DR_CHEM,
+        isShown: true,
+      },
+      {
         key: 'asteroids',
         name: t`Asteroids`,
         link: ROUTES.ASTEROIDS,

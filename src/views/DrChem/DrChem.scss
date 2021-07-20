@@ -1,0 +1,23 @@
+.dr-chem-main {
+  .app-cards-container {
+    display: flex;
+  }
+
+  .app-card {
+    width: 300px;
+    height: 335px;
+    border: 1px solid #313133;
+    border-radius: 6px;
+    padding: 16px;
+    margin-right: 16px;
+
+    .button.primary {
+      margin-top: 12px;
+    }
+  }
+
+  .app-icon {
+    height: 30%;
+    fill: var(--ds-orange-100);
+  }
+}
