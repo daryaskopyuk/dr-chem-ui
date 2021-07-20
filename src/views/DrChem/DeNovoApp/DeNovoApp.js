@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Input } from '@datarobot/design-system/js/input';
 import { PROPERTIES_KEYS } from './de-novo-helpers';
 import DeNovoTable from './DeNovoTable';
+import StartButton from './StartButton';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
@@ -58,15 +59,7 @@ export default function DeNovoApp() {
   return (
     <SimplePageLayout>
       <div className="de-novo-app">
-        <button
-          className="start-button"
-          disabled={Object.values(propsValues).every((val) => val !== 0 && !val)}
-          onClick={runModel}
-        >
-          <span className="separator">
-            <span className="start-label">Start</span>
-          </span>
-        </button>
+        <StartButton handleClick={runModel} />
         <form className="props-form">
           {CHEM_PROPERTIES.map(({ key, title, description, placeholder }) => (
             <Input
