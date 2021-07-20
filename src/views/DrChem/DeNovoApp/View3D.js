@@ -7,8 +7,6 @@ export default function View3D({ representation3d }) {
   const visRef = useRef(null);
   const instanceRef = useRef(null);
 
-  console.log(111, representation3d);
-
   useEffect(() => {
     instanceRef.current = new Miew({
       container: visRef?.current,
@@ -26,6 +24,7 @@ export default function View3D({ representation3d }) {
     }
   }, [])
 
+  // todo - remove ugly miew loader
   return (
     <div className="view-3d">
       <div ref={visRef} className="miew-container" style={{ width: '100%', height: '100%' }}/>

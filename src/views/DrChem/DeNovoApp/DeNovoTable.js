@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Table, withExpandableContent } from '@datarobot/design-system/js/table';
 
 import View3D from './View3D';
+import View2D from './View2D';
 
 import { PROPERTIES_KEYS, limitPrecision } from './de-novo-helpers';
 
@@ -42,12 +43,6 @@ const tableColumns = [
   },
 ];
 
-const Representation2D = () => {
-  return (
-    <div>2222</div>
-  )
-}
-
 const TABLE_TABS = [
   {
     key: 'representation3d',
@@ -59,7 +54,7 @@ const TABLE_TABS = [
     key: 'representation2d',
     value: '2D Representation',
     id: '2d-representation',
-    component: Representation2D,
+    component: View2D,
   }
 ];
 
@@ -75,6 +70,7 @@ function fotmatMoleculesDataForTable(moleculesData) {
       smiles: molecule.smiles,
       moleculeStructure: molecule.structure,
       image: molecule.graph,
+      imageWithInsights: molecule.graphWithInsights,
       [PROPERTIES_KEYS.LOG_P]: getProperty(molecule, PROPERTIES_KEYS.LOG_P),
       [PROPERTIES_KEYS.T_PCA]: getProperty(molecule, PROPERTIES_KEYS.T_PCA),
       [PROPERTIES_KEYS.QED]: getProperty(molecule, PROPERTIES_KEYS.QED),

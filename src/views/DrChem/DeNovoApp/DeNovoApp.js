@@ -10,6 +10,7 @@ import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 import { useDeNovoDataMutation } from 'services/applicationApi';
 
 import './DeNovoApp.scss';
+import * as URL from 'url';
 
 const CHEM_PROPERTIES = [
   {
@@ -32,7 +33,6 @@ const CHEM_PROPERTIES = [
   },
 ];
 
-// todo - add inputs validation
 export default function DeNovoApp() {
   const [propsValues, setPropsValues] = useState({
     [PROPERTIES_KEYS.LOG_P]: null,
@@ -50,7 +50,7 @@ export default function DeNovoApp() {
   };
 
   const runModel = async () => {
-    const { content } = await addDeNovoMutation().unwrap();
+    const { content } = await addDeNovoMutation(new URLSearchParams(propsValues).toString()).unwrap();
 
     setMoleculesData(content);
   }

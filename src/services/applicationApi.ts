@@ -118,8 +118,8 @@ export const applicationApi = createApi({
       }),
     }),
     deNovoData: builder.mutation<any, any>({
-      query: () => ({
-        url: '/denovo/',
+      query: (queryString) => ({
+        url: `/denovo/?${queryString}`,
         method: 'GET',
       }),
     }),
