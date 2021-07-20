@@ -10,7 +10,9 @@ export const ROUTES = {
   AUTH: '/auth',
   LOGIN: '/auth/login',
   DATAROBOT_OAUTH_CALLBACK: '/auth/oauth/dr-callback',
-  DR_CHEM: '/drchem'
+  DR_CHEM: '/drchem',
+  DE_NOVO_APP: '/drchem/de-novo',
+  CHEM_PREDICTIONS: '/drchem/predictions',
 };
 
 /* Known error codes returned in 'code' field by server */

@@ -18,6 +18,8 @@ const Astronauts = lazy(() => import('views/Astronauts/Astronauts'));
 const Asteroids = lazy(() => import('views/Asteroids/Asteroids'));
 const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
 const DrChem = lazy(() => import('views/DrChem/DrChem'));
+const DeNovoApp = lazy(() => import('views/DrChem/DeNovoApp/DeNovoApp'));
+const ChemPredictions = lazy(() => import('views/DrChem/PredictionsApp/PredicitonsApp'));
 
 const Routes: FunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -54,8 +56,14 @@ const Routes: FunctionComponent = () => {
           <Route exact path={ROUTES.ASTEROIDS}>
             <Asteroids />
           </Route>
-          <Route path={ROUTES.DR_CHEM}>
+          <Route exact path={ROUTES.DR_CHEM}>
             <DrChem />
+          </Route>
+          <Route exact path={ROUTES.DE_NOVO_APP}>
+            <DeNovoApp />
+          </Route>
+          <Route exact path={ROUTES.CHEM_PREDICTIONS}>
+            <ChemPredictions />
           </Route>
           <Route path="*">
             <NoMatch />

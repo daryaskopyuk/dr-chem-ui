@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTES } from 'app-constants';
 
 import { Card } from '@datarobot/design-system/js/card';
-import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
+import { Button } from '@datarobot/design-system/js/button';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 import { ReactComponent as ChemIcon } from 'assets/images/chemistry.svg';
@@ -15,12 +17,14 @@ const APP_CARDS = [
     title: 'De Novo App',
     description: 'De Novo App description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi turpis, porta ut eros tincidunt, pulvinar ullamcorper urna.',
     IconComponent: ChemIcon,
+    link: ROUTES.DE_NOVO_APP,
   },
   {
     key: 'predictions-app',
     title: 'Chem Predictions App',
     description: 'Chem Predictions App description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi turpis, porta ut eros tincidunt, pulvinar ullamcorper urna.',
     IconComponent: ChemIconPredictions,
+    link: ROUTES.CHEM_PREDICTIONS,
   }
 ];
 
@@ -29,13 +33,15 @@ export default function DrChem() {
     <SimplePageLayout>
       <div className="dr-chem-main">
         <div className="app-cards-container">
-          {APP_CARDS.map(({ key, title, description, IconComponent}) => (
+          {APP_CARDS.map(({ key, title, description, IconComponent, link}) => (
             <Card key={key} cardClassName="app-card">
               <IconComponent className="app-icon" />
               <h3 className="view-header">{title}</h3>
               <p className="sub-text">{description}</p>
               <Button>
-                Explore
+                <Link to={link}>
+                  Explore
+                </Link>
               </Button>
             </Card>
           ))}
