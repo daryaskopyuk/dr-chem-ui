@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Input } from '@datarobot/design-system/js/input';
 import { PROPERTIES_KEYS } from './de-novo-helpers';
-import DeNovoTable from './DeNovoTable';
+import MoleculesTable from '../MoleculesTable';
 import StartButton from '../StartButton';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
@@ -71,7 +71,7 @@ export default function DeNovoApp() {
           ))}
         </form>
       </div>
-      <DeNovoTable moleculesData={moleculesData} />
+      <MoleculesTable moleculesData={moleculesData} />
     </SimplePageLayout>
   )
 }

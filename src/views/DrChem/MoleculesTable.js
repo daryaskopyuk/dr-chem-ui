@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Table, withExpandableContent } from '@datarobot/design-system/js/table';
 import { TruncateWithTooltip } from '@datarobot/design-system/js/truncate-with-tooltip';
 
-import View3D from './View3D';
-import View2D from './View2D';
+import View3D from './DeNovoApp/View3D';
+import View2D from './DeNovoApp/View2D';
 
-import { PROPERTIES_KEYS, limitPrecision } from './de-novo-helpers';
+import { PROPERTIES_KEYS, limitPrecision } from './DeNovoApp/de-novo-helpers';
 
-import './DeNovoTable.scss';
+import './MoleculesTable.scss';
 
 const IMAGE_DIMENSION = 100;
 
@@ -102,7 +102,7 @@ function CustomTh({ children, column }) {
 
 const DeNovoTableWithTabs = withExpandableContent(Table);
 
-export default function DeNovoTable({ moleculesData }) {
+export default function MoleculesTable({ moleculesData }) {
   const [selectedRowId, setSelectedRowId] = useState(null);
   const tableData = fotmatMoleculesDataForTable(moleculesData);
 

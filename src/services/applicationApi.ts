@@ -124,9 +124,10 @@ export const applicationApi = createApi({
       }),
     }),
     smilesPrediction:  builder.mutation<any, any>({
-      query: () => ({
-        url: `/predictions/`,
+      query: (queryString) => ({
+        url: `/predictions/?smiles=${queryString}`,
         method: 'GET',
+
       }),
     }),
   }),
