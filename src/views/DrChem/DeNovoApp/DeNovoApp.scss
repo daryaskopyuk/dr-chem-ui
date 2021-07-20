@@ -1,0 +1,94 @@
+.de-novo-app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+
+  .start-button {
+    position: relative;
+    display: block;
+    height: 200px;
+    width: 200px;
+    padding: 0;
+    background: linear-gradient(
+      0deg,
+      #040f1a,
+      #0e517d
+    );
+    border: 7px solid transparent;
+    border-radius: 100px;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    outline: none;
+    margin-bottom: 30px;
+
+    &[disabled] {
+      opacity: 0.3;
+      pointer-events: none;
+
+      &::after {
+        opacity: 0.3;
+      }
+    }
+
+    .start-label {
+      font-size: 60px;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      color: white;
+      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .separator {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      border: 2px solid var(--start-separator);
+      border-radius: 100px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      bottom: -7px;
+      left: -7px;
+      background: linear-gradient(0deg, #ff6d00, #3ca3e8);
+      border-radius: 110px;
+      transform: rotate(-45deg);
+      z-index: -1;
+      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &:hover:not([disabled]) {
+      .start-label {
+        color: #ff6d00;
+        transform: scale(1.02) translateZ(0);
+      }
+      &::after {
+        transform: rotate(-45deg) scale(1.02) translateZ(0);
+      }
+    }
+    &:active:not([disabled]) {
+      .start-label {
+        transform: scale(1) translateZ(0);
+      }
+      &::after {
+        transform: rotate(-45deg) scale(1) translateZ(0);
+      }
+    }
+  }
+
+  .props-form {
+    width: 40%;
+  }
+
+  .dr-form-field {
+    margin-bottom: 30px;
+  }
+}
