@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Input } from '@datarobot/design-system/js/input';
+import DeNovoTable from './DeNovoTable';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
@@ -71,6 +72,7 @@ export default function DeNovoApp() {
           ))}
         </form>
       </div>
+      <DeNovoTable />
     </SimplePageLayout>
   )
 }
