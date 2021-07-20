@@ -1,0 +1,19 @@
+.de-novo-table {
+  .r-td.rowIndex, .r-th.rowIndex {
+    flex: none;
+    width: 50px;
+    min-width: auto;
+  }
+
+  .r-td.smiles, .r-th.smiles {
+    flex: none;
+    width: 400px;
+    min-width: auto;
+    max-width: 400px;
+  }
+
+  .r-td.smiles{
+    color: white;
+    font-weight: 700;
+  }
+}

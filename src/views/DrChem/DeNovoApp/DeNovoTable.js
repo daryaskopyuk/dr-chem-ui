@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Table, withExpandableContent } from '@datarobot/design-system/js/table';
+import { TruncateWithTooltip } from '@datarobot/design-system/js/truncate-with-tooltip';
 
 import View3D from './View3D';
 import View2D from './View2D';
 
 import { PROPERTIES_KEYS, limitPrecision } from './de-novo-helpers';
+
+import './DeNovoTable.scss';
 
 const IMAGE_DIMENSION = 100;
 
@@ -78,6 +81,25 @@ function fotmatMoleculesDataForTable(moleculesData) {
   });
 }
 
+function CustomTd({ children, id }) {
+  return (
+    <div className={`r-td ${id}`}>
+      <TruncateWithTooltip>
+        <span>
+          {children}
+        </span>
+      </TruncateWithTooltip>
+    </div>
+  )
+}
+
+function CustomTh({ children, column }) {
+  return (
+    <div className={`r-th ${column.accessor}`}>{children}</div>
+  )
+}
+
+
 const DeNovoTableWithTabs = withExpandableContent(Table);
 
 export default function DeNovoTable({ moleculesData }) {
@@ -91,6 +113,9 @@ export default function DeNovoTable({ moleculesData }) {
       tabs={TABLE_TABS}
       selectedTableRowId={selectedRowId}
       onTableRowSelected={setSelectedRowId}
+      className="de-novo-table"
+      TdComponent={CustomTd}
+      ThComponent={CustomTh}
     />
   )
 }

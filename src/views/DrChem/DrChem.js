@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
 
 import { Card } from '@datarobot/design-system/js/card';
@@ -29,6 +29,8 @@ const APP_CARDS = [
 ];
 
 export default function DrChem() {
+  const history = useHistory();
+
   return (
     <SimplePageLayout>
       <div className="dr-chem-main">
@@ -38,10 +40,10 @@ export default function DrChem() {
               <IconComponent className="app-icon" />
               <h3 className="view-header">{title}</h3>
               <p className="sub-text">{description}</p>
-              <Button>
-                <Link to={link}>
-                  Explore
-                </Link>
+              <Button onClick={() => {
+                history.push(link)
+              }}>
+                Explore
               </Button>
             </Card>
           ))}

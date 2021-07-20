@@ -1,9 +1,6 @@
 import { FunctionComponent, useState, useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
 
-import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
 import { Link } from 'components/shared/Link/Link';
-import useCurrentUser from 'hooks/useCurrentUser';
 import useResponsive from 'hooks/useResponsive';
 import useTranslations from 'hooks/useTranslations';
 import { ROUTES } from 'app-constants';
@@ -33,13 +30,10 @@ export const Header: FunctionComponent<HeaderProps> = ({
   logoLink,
   isLogoDisabled,
   logoImageUrl,
-  hideAuthButtons,
   testId,
 }: HeaderProps) => {
-  const history = useHistory();
   const { isMobile } = useResponsive();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { isSignedIn, logOutUser } = useCurrentUser();
   const { t } = useTranslations();
 
   const navItems: NavigationItem[] = useMemo(
@@ -48,18 +42,6 @@ export const Header: FunctionComponent<HeaderProps> = ({
         key: 'dr-chem',
         name: t`DR Chem`,
         link: ROUTES.DR_CHEM,
-        isShown: true,
-      },
-      {
-        key: 'asteroids',
-        name: t`Asteroids`,
-        link: ROUTES.ASTEROIDS,
-        isShown: true,
-      },
-      {
-        key: 'astronauts',
-        name: t`Astronauts`,
-        link: ROUTES.ASTRONAUTS,
         isShown: true,
       },
     ],
@@ -87,31 +69,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
     [navItems]
   );
 
-  const authSection = useMemo(
-    () =>
-      !isSignedIn ? (
-        !hideAuthButtons && (
-          <Button
-            className={classes.loginButton}
-            accentType={ACCENT_TYPES.SECONDARY}
-            onClick={() => {
-              history.push(ROUTES.LOGIN);
-            }}
-          >
-            {t`Login`}
-          </Button>
-        )
-      ) : (
-        <Button
-          className={classes.avatar}
-          accentType={ACCENT_TYPES.COMMAND}
-          onClick={logOutUser}
-        >
-          {t`Log Out`}
-        </Button>
-      ),
-    [logOutUser, history, isSignedIn, hideAuthButtons, t]
-  );
+   const authSection = null;
 
   return (
     <div className={classes.headerContainer} test-id={testId}>
