@@ -117,6 +117,12 @@ export const applicationApi = createApi({
         body: payload,
       }),
     }),
+    deNovoData: builder.mutation<any, any>({
+      query: () => ({
+        url: '/denovo/',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -127,4 +133,5 @@ export const {
   useGetAsteroidsQuery,
   useGetAuthorizeUrlQuery,
   useAuthenticateMutation,
+  useDeNovoDataMutation,
 } = applicationApi;

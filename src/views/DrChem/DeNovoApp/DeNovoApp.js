@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import { Input } from '@datarobot/design-system/js/input';
+import { PROPERTIES_KEYS } from './de-novo-helpers';
 import DeNovoTable from './DeNovoTable';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
+
+import { useDeNovoDataMutation } from 'services/applicationApi';
 
 import './DeNovoApp.scss';
 
 const CHEM_PROPERTIES = [
   {
-    key: 'logP',
+    key: PROPERTIES_KEYS.LOG_P,
     title: 'Partition Coefficient (logP)',
     description: 'The measure of how hydrophilic or hydrophobic a molecule is',
     placeholder: 'Enter a positive or negative number',
   },
   {
-    key: 'tPSA',
+    key: PROPERTIES_KEYS.T_PCA,
     title: 'Topological polar surface area (tPSA, angstroms squared)',
     description: 'The surface sum over all polar atoms or molecules, primarily oxygen and nitrogen, also including their attached hydrogen atoms',
     placeholder: 'Enter a positive number'
   },
   {
-    key: 'qed',
+    key: PROPERTIES_KEYS.QED,
     title: 'Drug Likeness (QED)',
     description: 'An integrative score to evaluate compounds\' favorability to become a hit',
     placeholder: 'Enter a number between 0 and 1',
@@ -31,10 +35,12 @@ const CHEM_PROPERTIES = [
 // todo - add inputs validation
 export default function DeNovoApp() {
   const [propsValues, setPropsValues] = useState({
-    logP: null,
-    tPSA: null,
-    qed: null,
+    [PROPERTIES_KEYS.LOG_P]: null,
+    [PROPERTIES_KEYS.T_PCA]: null,
+    [PROPERTIES_KEYS.QED]: null,
   });
+  const [addDeNovoMutation] = useDeNovoDataMutation();
+  const [moleculesData, setMoleculesData] = useState([]);
 
   const handlePropChange = (inputVal, key) => {
     setPropsValues((prevValues) => ({
@@ -43,8 +49,10 @@ export default function DeNovoApp() {
     }))
   };
 
-  const runModel = () => {
-    console.log('propsValues', propsValues);
+  const runModel = async () => {
+    const { content } = await addDeNovoMutation().unwrap();
+
+    setMoleculesData(content);
   }
 
   return (
@@ -72,7 +80,7 @@ export default function DeNovoApp() {
           ))}
         </form>
       </div>
-      <DeNovoTable />
+      <DeNovoTable moleculesData={moleculesData} />
     </SimplePageLayout>
   )
 }

@@ -9173,6 +9173,14 @@ micromatch@^4.0.2:
     braces "^3.0.1"
     picomatch "^2.2.3"
 
+miew@0.9.0:
+  version "0.9.0"
+  resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/miew/-/miew-0.9.0.tgz#0b050b89de2958617bdb77220d7ee051f453179e"
+  integrity sha1-CwULid4pWGF723ciDX7gUfRTF54=
+  dependencies:
+    lodash "^4.17.15"
+    three "0.112.1"
+
 miller-rabin@^4.0.0:
   version "4.0.1"
   resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/miller-rabin/-/miller-rabin-4.0.1.tgz#f080351c865b0dc562a8462966daa53543c78a4d"
@@ -13102,6 +13110,11 @@ text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three@0.112.1:
+  version "0.112.1"
+  resolved "https://artifactory.devinfra.drdev.io/artifactory/api/npm/npm-all/three/-/three-0.112.1.tgz#f8d8f4d0f8e5f753dac6260491b8209457fdc131"
+  integrity sha1-+Nj00Pjl91PaxiYEkbgglFf9wTE=
 
 throat@^5.0.0:
   version "5.0.0"
