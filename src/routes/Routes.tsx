@@ -19,7 +19,7 @@ const Asteroids = lazy(() => import('views/Asteroids/Asteroids'));
 const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
 const DrChem = lazy(() => import('views/DrChem/DrChem'));
 const DeNovoApp = lazy(() => import('views/DrChem/DeNovoApp/DeNovoApp'));
-const ChemPredictions = lazy(() => import('views/DrChem/PredictionsApp/PredicitonsApp'));
+const ChemPredictions = lazy(() => import('views/DrChem/PredictionsApp/PredictionsApp'));
 
 const Routes: FunctionComponent = () => {
   const dispatch = useAppDispatch();

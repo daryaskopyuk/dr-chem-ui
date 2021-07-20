@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 import { Input } from '@datarobot/design-system/js/input';
 import { PROPERTIES_KEYS } from './de-novo-helpers';
 import DeNovoTable from './DeNovoTable';
-import StartButton from './StartButton';
+import StartButton from '../StartButton';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
 import { useDeNovoDataMutation } from 'services/applicationApi';
 
 import './DeNovoApp.scss';
-import * as URL from 'url';
 
 const CHEM_PROPERTIES = [
   {

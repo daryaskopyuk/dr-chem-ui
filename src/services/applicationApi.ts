@@ -123,6 +123,12 @@ export const applicationApi = createApi({
         method: 'GET',
       }),
     }),
+    smilesPrediction:  builder.mutation<any, any>({
+      query: () => ({
+        url: `/predictions/`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -134,4 +140,5 @@ export const {
   useGetAuthorizeUrlQuery,
   useAuthenticateMutation,
   useDeNovoDataMutation,
+  useSmilesPredictionMutation,
 } = applicationApi;

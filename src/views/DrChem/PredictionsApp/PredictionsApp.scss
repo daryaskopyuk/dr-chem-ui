@@ -1,0 +1,27 @@
+.predictions-app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+
+  .smiles-form {
+    width: 50%;
+  }
+
+  .predictions-app-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .dr-form-field {
+      flex: 60%;
+      margin-right: 8px;
+    }
+
+    .round-icon-button {
+      margin-top: 20px;
+    }
+  }
+}
