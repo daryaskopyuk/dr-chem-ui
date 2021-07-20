@@ -65,7 +65,7 @@ const TABLE_TABS = [
 
 function fotmatMoleculesDataForTable(moleculesData) {
   const getProperty = (molecule, propertyName) => {
-    const val = molecule.properties.find((p) => p.name === PROPERTIES_KEYS.LOG_P).value
+    const val = molecule.properties.find((p) => p.name === propertyName).value
 
     return limitPrecision(val, 4);
   }
@@ -73,6 +73,7 @@ function fotmatMoleculesDataForTable(moleculesData) {
     return {
       id: molecule.smiles,
       smiles: molecule.smiles,
+      moleculeStructure: molecule.structure,
       image: molecule.graph,
       [PROPERTIES_KEYS.LOG_P]: getProperty(molecule, PROPERTIES_KEYS.LOG_P),
       [PROPERTIES_KEYS.T_PCA]: getProperty(molecule, PROPERTIES_KEYS.T_PCA),
