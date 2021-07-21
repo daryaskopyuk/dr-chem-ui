@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 
 import { Input } from '@datarobot/design-system/js/input';
 import { PROPERTIES_KEYS } from './de-novo-helpers';
 import MoleculesTable from '../MoleculesTable';
 import StartButton from '../StartButton';
+import FakeProgressBar from '../FakeProgressBar';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 
@@ -38,7 +40,7 @@ export default function DeNovoApp() {
     [PROPERTIES_KEYS.T_PCA]: null,
     [PROPERTIES_KEYS.QED]: null,
   });
-  const [addDeNovoMutation] = useDeNovoDataMutation();
+  const [addDeNovoMutation, { isLoading }] = useDeNovoDataMutation();
   const [moleculesData, setMoleculesData] = useState([]);
 
   const handlePropChange = (inputVal, key) => {
@@ -57,20 +59,31 @@ export default function DeNovoApp() {
   return (
     <SimplePageLayout>
       <div className="de-novo-app">
-        <StartButton handleClick={runModel} />
-        <form className="props-form">
-          {CHEM_PROPERTIES.map(({ key, title, description, placeholder }) => (
-            <Input
-              key={key}
-              id={key}
-              label={title}
-              helperText={description}
-              placeholder={placeholder}
-              onChange={(e, value) => handlePropChange(value, key)}
-            />
-          ))}
-        </form>
+        <div className={classNames('de-novo-request-block', {
+          loading: isLoading,
+        })}>
+          <StartButton handleClick={runModel} />
+          <form className="props-form">
+            {CHEM_PROPERTIES.map(({ key, title, description, placeholder }) => (
+              <Input
+                key={key}
+                id={key}
+                label={title}
+                helperText={description}
+                placeholder={placeholder}
+                onChange={(e, value) => handlePropChange(value, key)}
+              />
+            ))}
+          </form>
+        </div>
+
+        {isLoading && (
+          <div className="loading-container">
+            <FakeProgressBar progressLabel="Molecules are calculating" />
+          </div>
+        )}
       </div>
+
       <MoleculesTable moleculesData={moleculesData} />
     </SimplePageLayout>
   )

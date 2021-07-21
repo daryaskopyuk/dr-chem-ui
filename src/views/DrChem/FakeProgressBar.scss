@@ -1,5 +1,24 @@
 .fake-progress-bar {
+  width: 100%;
+
   .progress {
-    width: 200px;
+    width: 100%;
+  }
+
+  .fake-msg {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .center-status.message.in-progress {
+    margin: 0 8px 0 0;
+    padding: 0;
+    display: inline-block;
+    flex: 0;
+
+    &::before {
+      color: white;
+    }
   }
 }

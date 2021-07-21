@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 
 import { useSmilesPredictionMutation } from 'services/applicationApi';
 
@@ -44,35 +45,44 @@ export default function PredictionsApp() {
   return (
     <SimplePageLayout>
       <div className="predictions-app">
-        <StartButton handleClick={getPredictions} isDisabled={smilesTruthyValues.length === 0}/>
+        <div className={classNames("predictions-request-block", {
+          loading: isLoading,
+        })}>
+          <StartButton handleClick={getPredictions} isDisabled={smilesTruthyValues.length === 0}/>
 
-        <form className="smiles-form">
-          {smilesInputs.map((smiles, index) => (
-            <div className="predictions-app-field" key={smiles.id}>
-              <Input
-                id="smiles-input"
-                label={`SMILES #${index + 1}`}
-                onChange={(e) => handleInputChange(e, smiles.id)}
-              />
-              {smilesInputs.length > 1 && (
-                <Button
-                  accentType={ACCENT_TYPES.ROUND_ICON}
-                  onClick={() => removeInput(smiles.id)}
-                >
-                  <i className="fas fa-times" />
-                </Button>
-              )}
-            </div>
-          ))}
+          <form className="smiles-form">
+            {smilesInputs.map((smiles, index) => (
+              <div className="predictions-app-field" key={smiles.id}>
+                <Input
+                  id="smiles-input"
+                  label={`SMILES #${index + 1}`}
+                  onChange={(e) => handleInputChange(e, smiles.id)}
+                />
+                {smilesInputs.length > 1 && (
+                  <Button
+                    accentType={ACCENT_TYPES.ROUND_ICON}
+                    onClick={() => removeInput(smiles.id)}
+                  >
+                    <i className="fas fa-times" />
+                  </Button>
+                )}
+              </div>
+            ))}
 
-          <Button
-            onClick={addInput}
-            className="margin-top-6"
-          >
-            Add more SMILES
-          </Button>
-        </form>
-        <FakeProgressBar />
+            <Button
+              onClick={addInput}
+              className="margin-top-6"
+            >
+              Add more SMILES
+            </Button>
+          </form>
+        </div>
+
+        {isLoading && (
+          <div className="loading-container">
+            <FakeProgressBar progressLabel="Chem predictions are calculating" />
+          </div>
+        )}
       </div>
       <MoleculesTable moleculesData={moleculesData} />
     </SimplePageLayout>
