@@ -2,7 +2,7 @@ import React from 'react';
 
 import './StartButton.scss';
 
-export default function StartButton({ handleClick, isDisabled }) {
+export default function StartButton({ handleClick, isDisabled, selectedModel }) {
   return (
     <div className="start-button-block">
       <button
@@ -14,6 +14,11 @@ export default function StartButton({ handleClick, isDisabled }) {
         <span className="start-label">Start</span>
       </span>
       </button>
+
+       <div>
+         <span>Selected model: </span>
+         <span>{selectedModel}</span>
+       </div>
     </div>
 )
 }

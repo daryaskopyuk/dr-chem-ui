@@ -6,6 +6,7 @@ import { astronautsApi } from 'services/astronautsApi';
 import { applicationApi } from 'services/applicationApi';
 
 import currentUser from './currentUser';
+import currentModel from './currentModel';
 import locale from './locale';
 
 const store = configureStore({
@@ -14,6 +15,7 @@ const store = configureStore({
     [astronautsApi.reducerPath]: astronautsApi.reducer,
     [applicationApi.reducerPath]: applicationApi.reducer,
     currentUser,
+    currentModel,
     locale,
   },
   // Adding the api middleware enables caching, invalidation, polling,

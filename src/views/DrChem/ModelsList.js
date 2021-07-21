@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ROUTES } from 'app-constants';
+import { useAppDispatch, useAppSelector } from 'store/store';
+import { setCurrentModel } from 'store/currentModel';
 
 import { ReactComponent as PyTorchIcon } from 'assets/images/py-torch.svg';
 
@@ -26,8 +28,13 @@ const MODELS = [
 ];
 
 export default function ModelsList() {
+  const dispatch = useAppDispatch();
   const history = useHistory();
-  const [selectedModel, setSelectedModel] = useState(null);
+  const selectedModel = useAppSelector((state) => state.currentModel);
+
+  const handleSelectedModel = (selectedId) => {
+    dispatch(setCurrentModel(selectedId))
+  }
 
   return (
     <SimplePageLayout customClass="models-list-layout">
@@ -35,7 +42,7 @@ export default function ModelsList() {
       <div className='models-list'>
         {MODELS.map(({ bpId, title, description, ModelIcon }) => (
           <div key={bpId} className="model-item">
-            <Checkbox id={bpId} isChecked={bpId === selectedModel} onChange={(e) => setSelectedModel(e.target.id)} />
+            <Checkbox id={bpId} isChecked={bpId === selectedModel} onChange={(e) => handleSelectedModel(e.target.id)} />
             <div className="model-info">
               <div className="small-header">
                 <ModelIcon className="model-icon" />

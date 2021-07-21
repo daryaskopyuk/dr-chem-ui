@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
+import { useAppSelector } from 'store/store';
 import { Input } from '@datarobot/design-system/js/input';
 import { PROPERTIES_KEYS, CHEM_PROPERTIES } from './de-novo-helpers';
 import MoleculesTable from '../MoleculesTable';
@@ -19,8 +20,9 @@ export default function DeNovoApp() {
     [PROPERTIES_KEYS.T_PCA]: null,
     [PROPERTIES_KEYS.QED]: null,
   });
-  const [addDeNovoMutation, { isLoading, isSuccess, isError, ...props }] = useDeNovoDataMutation();
+  const [addDeNovoMutation, { isLoading, isSuccess, isError }] = useDeNovoDataMutation();
   const [moleculesData, setMoleculesData] = useState([]);
+  const selectedModel = useAppSelector((state) => state.currentModel);
 
   const handlePropChange = (inputVal, key) => {
     setPropsValues((prevValues) => ({
@@ -43,7 +45,7 @@ export default function DeNovoApp() {
         <div className={classNames('de-novo-request-block', {
           loading: isLoading,
         })}>
-          <StartButton handleClick={runModel} />
+          <StartButton handleClick={runModel} selectedModel={selectedModel} />
           <form className="props-form">
             {CHEM_PROPERTIES.map(({ key, title, description, placeholder }) => (
               <Input
