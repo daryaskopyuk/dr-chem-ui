@@ -1,18 +1,30 @@
 .dr-chem-main {
   .app-cards-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .app-card {
+    position: relative;
     width: 300px;
     height: 335px;
     border: 1px solid #313133;
     border-radius: 6px;
     padding: 16px;
     margin-right: 16px;
+    margin-bottom: 16px;
 
-    .button.primary {
+    .button {
+      position: absolute;
+      bottom: 30px;
       margin-top: 12px;
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      pointer-events: none;
     }
   }
 
