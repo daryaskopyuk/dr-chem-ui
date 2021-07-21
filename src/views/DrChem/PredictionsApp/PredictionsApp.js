@@ -15,7 +15,7 @@ import './PredictionsApp.scss';
 export default function PredictionsApp() {
   const [smilesInputs, setSmilesInputs] = useState([{ id: 0, value: ''}]);
   const [moleculesData, setMoleculesData] = useState([]);
-  const [addSmilesPredictionMutation, { isLoading, isSuccess }] = useSmilesPredictionMutation();
+  const [addSmilesPredictionMutation, { isLoading, isSuccess, isError }] = useSmilesPredictionMutation();
 
   const smilesTruthyValues = smilesInputs.map((input) => input.value).filter(val => val);
 
@@ -84,6 +84,7 @@ export default function PredictionsApp() {
             progressLabel="Chem predictions are calculating"
             isSuccess={isSuccess}
             isLoading={isLoading}
+            isError={isError}
           />
         </div>
 

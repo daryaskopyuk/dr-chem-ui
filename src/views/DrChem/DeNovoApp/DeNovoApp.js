@@ -40,7 +40,7 @@ export default function DeNovoApp() {
     [PROPERTIES_KEYS.T_PCA]: null,
     [PROPERTIES_KEYS.QED]: null,
   });
-  const [addDeNovoMutation, { isLoading, isSuccess }] = useDeNovoDataMutation();
+  const [addDeNovoMutation, { isLoading, isSuccess, isError, ...props }] = useDeNovoDataMutation();
   const [moleculesData, setMoleculesData] = useState([]);
 
   const handlePropChange = (inputVal, key) => {
@@ -83,6 +83,7 @@ export default function DeNovoApp() {
             progressLabel="Molecules are calculating"
             isSuccess={isSuccess}
             isLoading={isLoading}
+            isError={isError}
           />
         </div>
 

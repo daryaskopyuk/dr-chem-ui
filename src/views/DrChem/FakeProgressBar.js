@@ -28,7 +28,7 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
-export default function FakeProgressBar({ progressLabel = '', isSuccess, isLoading }) {
+export default function FakeProgressBar({ progressLabel = '', isSuccess, isLoading, isError }) {
   const [progressCounter, setProgressCounter] = useState(0);
 
   useInterval(() => {
@@ -37,16 +37,11 @@ export default function FakeProgressBar({ progressLabel = '', isSuccess, isLoadi
   }, progressCounter < 99 && !isSuccess ? INTERVAL_DELAY : null)
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isError) {
       setProgressCounter(0);
     }
-  }, [isSuccess]);
+  }, [isSuccess, isError]);
 
-  if (!isLoading && !isSuccess) {
-    return null;
-  }
-
-  // todo - add error case
   return (
     <div className="fake-progress-bar">
       {isLoading && (
@@ -65,6 +60,16 @@ export default function FakeProgressBar({ progressLabel = '', isSuccess, isLoadi
             <p className="message success">Calculations completed</p>
           </div>
           <ProgressBar success={true} value={100} />
+        </div>
+      )}
+
+      {isError && (
+        <div className="error-block"
+        >
+          <div className="fake-msg">
+            <p className="message error">Calculations failed. Try again</p>
+          </div>
+          <ProgressBar error={true} value={100} />
         </div>
       )}
     </div>
