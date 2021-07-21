@@ -10,16 +10,16 @@
     width: 200px;
     padding: 0;
     background: linear-gradient(
-                    0deg,
-                    #040f1a,
-                    #0e517d
+      0deg,
+      #040f1a,
+      #0e517d
     );
     border: 7px solid transparent;
     border-radius: 100px;
     background-clip: padding-box;
     box-sizing: border-box;
     outline: none;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 
     &[disabled] {
       opacity: 0.3;
@@ -79,17 +79,6 @@
       &::after {
         transform: rotate(-45deg) scale(1) translateZ(0);
       }
-    }
-  }
-
-  .autopilot-mode {
-    .bold-label {
-      margin-right: 4px;
-    }
-
-    .mode-name {
-      color: #ff6d00;
-      font-weight: 700;
     }
   }
 }

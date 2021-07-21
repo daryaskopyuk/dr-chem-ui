@@ -14,11 +14,6 @@ export default function StartButton({ handleClick, isDisabled }) {
         <span className="start-label">Start</span>
       </span>
       </button>
-
-      <div className="autopilot-mode">
-        <span className='bold-label'>Modeling mode:</span>
-        <span className="mode-name">Autopilot</span>
-      </div>
     </div>
 )
 }
