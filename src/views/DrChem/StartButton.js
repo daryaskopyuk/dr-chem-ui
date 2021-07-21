@@ -17,10 +17,12 @@ export default function StartButton({ handleClick, isDisabled, selectedModel }) 
       </span>
       </button>
 
-       <div className="selected-model-info">
-         <span className="small-subtext">Selected model: </span>
-         <span className="bold-caption">{MODELS.find((m) => m.bpId === selectedModel).title}</span>
-       </div>
+      {selectedModel && (
+        <div className="selected-model-info">
+          <span className="small-subtext">Selected model: </span>
+          <span className="bold-caption">{MODELS.find((m) => m.bpId === selectedModel).title}</span>
+        </div>
+      )}
     </div>
 )
 }
