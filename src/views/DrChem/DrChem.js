@@ -14,6 +14,8 @@ import { ReactComponent as TargetIcon } from 'assets/images/target.svg';
 import { ReactComponent as AtomIcon } from 'assets/images/atom.svg';
 import { ReactComponent as ChemPlanning } from 'assets/images/chem-planning.svg';
 
+import ModelList from './ModelsList';
+
 import './DrChem.scss';
 
 const APP_CARDS = [
@@ -91,6 +93,8 @@ export default function DrChem() {
             </Card>
           ))}
         </div>
+
+        <ModelList />
       </div>
     </SimplePageLayout>
   )
