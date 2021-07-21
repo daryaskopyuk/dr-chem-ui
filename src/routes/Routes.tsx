@@ -20,6 +20,7 @@ const NoMatch = lazy(() => import('views/NoMatch/NoMatch'));
 const DrChem = lazy(() => import('views/DrChem/DrChem'));
 const DeNovoApp = lazy(() => import('views/DrChem/DeNovoApp/DeNovoApp'));
 const ChemPredictions = lazy(() => import('views/DrChem/PredictionsApp/PredictionsApp'));
+const ModelsList = lazy(() => import('views/DrChem/ModelsList'));
 
 const Routes: FunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -64,6 +65,9 @@ const Routes: FunctionComponent = () => {
           </Route>
           <Route exact path={ROUTES.CHEM_PREDICTIONS}>
             <ChemPredictions />
+          </Route>
+          <Route exact path={ROUTES.MODELS_LIST}>
+            <ModelsList />
           </Route>
           <Route path="*">
             <NoMatch />

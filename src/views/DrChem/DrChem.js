@@ -24,7 +24,8 @@ const APP_CARDS = [
     title: 'De Novo App',
     description: 'De Novo App description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi turpis, porta ut eros tincidunt, pulvinar ullamcorper urna.',
     IconComponent: ChemIcon,
-    link: ROUTES.DE_NOVO_APP,
+    // link: ROUTES.DE_NOVO_APP,
+    link: ROUTES.MODELS_LIST,
     enabled: true,
   },
   {

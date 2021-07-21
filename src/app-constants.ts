@@ -13,6 +13,7 @@ export const ROUTES = {
   DR_CHEM: '/drchem',
   DE_NOVO_APP: '/drchem/de-novo',
   CHEM_PREDICTIONS: '/drchem/predictions',
+  MODELS_LIST: '/drchem/models',
 };
 
 /* Known error codes returned in 'code' field by server */
