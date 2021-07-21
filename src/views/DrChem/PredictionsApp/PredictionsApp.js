@@ -15,7 +15,7 @@ import './PredictionsApp.scss';
 export default function PredictionsApp() {
   const [smilesInputs, setSmilesInputs] = useState([{ id: 0, value: ''}]);
   const [moleculesData, setMoleculesData] = useState([]);
-  const [addSmilesPredictionMutation, { isLoading }] = useSmilesPredictionMutation();
+  const [addSmilesPredictionMutation, { isLoading, isSuccess }] = useSmilesPredictionMutation();
 
   const smilesTruthyValues = smilesInputs.map((input) => input.value).filter(val => val);
 
@@ -78,11 +78,13 @@ export default function PredictionsApp() {
           </form>
         </div>
 
-        {isLoading && (
-          <div className="loading-container">
-            <FakeProgressBar progressLabel="Chem predictions are calculating" />
-          </div>
-        )}
+        <div className="loading-container">
+          <FakeProgressBar
+            progressLabel="Chem predictions are calculating"
+            isSuccess={isSuccess}
+            isLoading={isLoading}
+          />
+        </div>
       </div>
       <MoleculesTable moleculesData={moleculesData} />
     </SimplePageLayout>

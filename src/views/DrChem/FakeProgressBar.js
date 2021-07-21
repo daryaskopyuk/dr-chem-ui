@@ -28,21 +28,45 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
-export default function FakeProgressBar({ progressLabel = ''}) {
+export default function FakeProgressBar({ progressLabel = '', isSuccess, isLoading }) {
   const [progressCounter, setProgressCounter] = useState(0);
 
   useInterval(() => {
     const nextValue = progressCounter > THRESHOLD_TO_SLOW_DOWN ? progressCounter + STEP_SM : progressCounter + STEP_BIG
     setProgressCounter(Math.round(nextValue))
-  }, progressCounter < 99 ? INTERVAL_DELAY : null)
+  }, progressCounter < 99 && !isSuccess ? INTERVAL_DELAY : null)
 
+  useEffect(() => {
+    if (isSuccess) {
+      setProgressCounter(0);
+    }
+  }, [isSuccess]);
+
+  if (!isLoading && !isSuccess) {
+    return null;
+  }
+
+  // todo - add error case
   return (
     <div className="fake-progress-bar">
-      <div className="fake-msg">
-        <LoadingIcon message={''} />
-        <h4>{`${progressLabel}: ${progressCounter}%`}</h4>
-      </div>
-      <ProgressBar value={progressCounter} max={99} />
+      {isLoading && (
+        <div className="fake-progress">
+          <div className="fake-msg">
+            <p className="message in-progress">{`${progressLabel}: ${progressCounter}%`}</p>
+          </div>
+          <ProgressBar value={progressCounter} max={99} />
+        </div>
+      )}
+
+      {isSuccess && (
+        <div className="fake-success"
+        >
+          <div className="fake-msg">
+            <p className="message success">Calculations completed</p>
+          </div>
+          <ProgressBar success={true} value={100} />
+        </div>
+      )}
     </div>
   )
 }

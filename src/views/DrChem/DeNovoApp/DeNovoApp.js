@@ -40,7 +40,7 @@ export default function DeNovoApp() {
     [PROPERTIES_KEYS.T_PCA]: null,
     [PROPERTIES_KEYS.QED]: null,
   });
-  const [addDeNovoMutation, { isLoading }] = useDeNovoDataMutation();
+  const [addDeNovoMutation, { isLoading, isSuccess }] = useDeNovoDataMutation();
   const [moleculesData, setMoleculesData] = useState([]);
 
   const handlePropChange = (inputVal, key) => {
@@ -77,11 +77,13 @@ export default function DeNovoApp() {
           </form>
         </div>
 
-        {isLoading && (
-          <div className="loading-container">
-            <FakeProgressBar progressLabel="Molecules are calculating" />
-          </div>
-        )}
+        <div className="loading-container">
+          <FakeProgressBar
+            progressLabel="Molecules are calculating"
+            isSuccess={isSuccess}
+            isLoading={isLoading}
+          />
+        </div>
       </div>
 
       <MoleculesTable moleculesData={moleculesData} />
