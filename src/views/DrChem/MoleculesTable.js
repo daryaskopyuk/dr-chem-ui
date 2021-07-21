@@ -73,7 +73,7 @@ function fotmatMoleculesDataForTable(moleculesData) {
       smiles: molecule.smiles,
       moleculeStructure: molecule.structure,
       image: molecule.graph,
-      imageWithInsights: molecule.graphWithInsights,
+      graphWithInsights: molecule.graphWithInsights,
       [PROPERTIES_KEYS.LOG_P]: getProperty(molecule, PROPERTIES_KEYS.LOG_P),
       [PROPERTIES_KEYS.T_PCA]: getProperty(molecule, PROPERTIES_KEYS.T_PCA),
       [PROPERTIES_KEYS.QED]: getProperty(molecule, PROPERTIES_KEYS.QED),
