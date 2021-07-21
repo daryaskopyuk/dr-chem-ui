@@ -49,7 +49,7 @@ export default function PredictionsApp() {
         <div className={classNames("predictions-request-block", {
           loading: isLoading,
         })}>
-          <StartButton handleClick={getPredictions} isDisabled={smilesTruthyValues.length === 0}/>
+          <StartButton handleClick={getPredictions} isDisabled={smilesTruthyValues.length === 0} />
 
           <form className="smiles-form">
             {smilesInputs.map((smiles, index) => (
@@ -69,6 +69,8 @@ export default function PredictionsApp() {
                 )}
               </div>
             ))}
+
+            <p className="message info">Add one or more SMILES strings</p>
 
             <Button
               onClick={addInput}

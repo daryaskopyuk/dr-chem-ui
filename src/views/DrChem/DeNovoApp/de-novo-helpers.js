@@ -14,13 +14,13 @@ export const CHEM_PROPERTIES = [
     key: PROPERTIES_KEYS.LOG_P,
     title: 'Partition Coefficient (logP)',
     description: 'The measure of how hydrophilic or hydrophobic a molecule is',
-    placeholder: 'Enter a positive or negative number',
+    placeholder: 'Enter a positive or negative float number',
   },
   {
     key: PROPERTIES_KEYS.T_PCA,
     title: 'Topological polar surface area (tPSA, angstroms squared)',
     description: 'The surface sum over all polar atoms or molecules, primarily oxygen and nitrogen, also including their attached hydrogen atoms',
-    placeholder: 'Enter a positive number'
+    placeholder: 'Enter a positive float number'
   },
   {
     key: PROPERTIES_KEYS.QED,
