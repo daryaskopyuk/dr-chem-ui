@@ -19,7 +19,7 @@ import './DrChem.scss';
 const APP_CARDS = [
   {
     key: 'de-novo',
-    title: 'De Novo App',
+    title: 'De Novo Molecule Design',
     description: 'De Novo App description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi turpis, porta ut eros tincidunt, pulvinar ullamcorper urna.',
     IconComponent: ChemIcon,
     link: ROUTES.MODELS_LIST,

@@ -49,13 +49,13 @@ const tableColumns = [
 const TABLE_TABS = [
   {
     key: 'representation3d',
-    value: '3D Representation',
+    value: '3D Molecule Structure',
     id: '3d-representation',
     component: View3D,
   },
   {
     key: 'representation2d',
-    value: 'Image Insights',
+    value: 'Molecular Graph',
     id: '2d-representation',
     component: View2D,
   }

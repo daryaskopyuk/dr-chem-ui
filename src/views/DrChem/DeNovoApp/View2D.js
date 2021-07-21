@@ -32,7 +32,7 @@ export default function View2D({ representation2d }) {
     <div className="view-2d">
       <DropdownMenu
         options={dropdownOptions}
-        labelText="Select insights property:"
+        labelText="Property to explain:"
         selectedKey={selectedProperty}
         onSelect={({ key }) => setSelectedProperty(key)}
         triggerClassName="chem-props-trigger"
