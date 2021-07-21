@@ -39,6 +39,7 @@ export default function DeNovoApp() {
   return (
     <SimplePageLayout>
       <div className="de-novo-app">
+        <h2 className="app-title">De Novo Molecule Design App</h2>
         <div className={classNames('de-novo-request-block', {
           loading: isLoading,
         })}>

@@ -46,6 +46,7 @@ export default function PredictionsApp() {
   return (
     <SimplePageLayout>
       <div className="predictions-app">
+        <h2 className="app-title">Chem Predictions App</h2>
         <div className={classNames("predictions-request-block", {
           loading: isLoading,
         })}>
