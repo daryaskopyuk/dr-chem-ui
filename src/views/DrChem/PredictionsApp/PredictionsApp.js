@@ -20,6 +20,7 @@ export default function PredictionsApp() {
   const smilesTruthyValues = smilesInputs.map((input) => input.value).filter(val => val);
 
   const getPredictions = async () => {
+    setMoleculesData([]);
     const { content } = await addSmilesPredictionMutation(JSON.stringify(smilesTruthyValues)).unwrap();
 
     setMoleculesData(content);
@@ -85,8 +86,11 @@ export default function PredictionsApp() {
             isLoading={isLoading}
           />
         </div>
+
+        {moleculesData.length > 0 && (
+          <MoleculesTable moleculesData={moleculesData} />
+        )}
       </div>
-      <MoleculesTable moleculesData={moleculesData} />
     </SimplePageLayout>
   )
 }

@@ -51,6 +51,7 @@ export default function DeNovoApp() {
   };
 
   const runModel = async () => {
+    setMoleculesData([]);
     const { content } = await addDeNovoMutation(new URLSearchParams(propsValues).toString()).unwrap();
 
     setMoleculesData(content);
@@ -84,9 +85,11 @@ export default function DeNovoApp() {
             isLoading={isLoading}
           />
         </div>
-      </div>
 
-      <MoleculesTable moleculesData={moleculesData} />
+        {moleculesData.length > 0 && (
+          <MoleculesTable moleculesData={moleculesData} />
+        )}
+      </div>
     </SimplePageLayout>
   )
 }

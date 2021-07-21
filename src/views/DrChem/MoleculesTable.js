@@ -113,7 +113,7 @@ export default function MoleculesTable({ moleculesData }) {
       tabs={TABLE_TABS}
       selectedTableRowId={selectedRowId}
       onTableRowSelected={setSelectedRowId}
-      className="de-novo-table"
+      className="molecules-table"
       TdComponent={CustomTd}
       ThComponent={CustomTh}
     />
