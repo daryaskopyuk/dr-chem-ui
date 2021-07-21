@@ -7,13 +7,14 @@ import { Input } from '@datarobot/design-system/js/input';
 import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
 import StartButton from '../StartButton';
 import MoleculesTable from '../MoleculesTable';
+import FakeProgressBar from '../FakeProgressBar';
 
 import './PredictionsApp.scss';
 
 export default function PredictionsApp() {
   const [smilesInputs, setSmilesInputs] = useState([{ id: 0, value: ''}]);
   const [moleculesData, setMoleculesData] = useState([]);
-  const [addSmilesPredictionMutation] = useSmilesPredictionMutation();
+  const [addSmilesPredictionMutation, { isLoading }] = useSmilesPredictionMutation();
 
   const smilesTruthyValues = smilesInputs.map((input) => input.value).filter(val => val);
 
@@ -71,6 +72,7 @@ export default function PredictionsApp() {
             Add more SMILES
           </Button>
         </form>
+        <FakeProgressBar />
       </div>
       <MoleculesTable moleculesData={moleculesData} />
     </SimplePageLayout>
