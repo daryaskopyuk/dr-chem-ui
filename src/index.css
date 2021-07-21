@@ -7,9 +7,17 @@
 @import '~@datarobot/design-system/styles/button.css';
 @import '~@datarobot/design-system/styles/table.css';
 @import '~@datarobot/design-system/styles/alert.css';
-@import '~@datarobot/design-system/styles/toggler-switch.css';
 @import '~@datarobot/design-system/styles/progress-bar.css';
+@import '~@datarobot/design-system/styles/dropdown-menu.css';
 
 @import 'assets/styles/fontface.css';
 
 @import 'assets/styles/global.css';
+
+body {
+  font-size: 14px;
+}
+
+[data-popper-placement] {
+  z-index: 5;
+}

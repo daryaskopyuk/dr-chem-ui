@@ -55,7 +55,7 @@ const TABLE_TABS = [
   },
   {
     key: 'representation2d',
-    value: '2D Representation',
+    value: 'Image Insights',
     id: '2d-representation',
     component: View2D,
   }

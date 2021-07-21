@@ -1,13 +1,16 @@
 .view-2d {
-  padding-right: 24px;
-  padding-bottom: 30px;
-
-  .toggler-switch {
-    margin-bottom: 12px;
-  }
+  padding: 12px 24px 30px;
 
   .view-2d-wrap {
     display: flex;
     justify-content: center;
+  }
+
+  .chem-props-trigger {
+    margin-bottom: 30px;
+
+    .truncate-with-tooltip {
+      max-width: 250px;
+    }
   }
 }
