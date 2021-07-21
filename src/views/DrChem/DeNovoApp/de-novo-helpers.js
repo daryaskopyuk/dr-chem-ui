@@ -28,4 +28,6 @@ export const CHEM_PROPERTIES = [
     description: 'An integrative score to evaluate compounds\' favorability to become a hit',
     placeholder: 'Enter a number between 0 and 1',
   },
+
+
 ];
