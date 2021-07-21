@@ -4,28 +4,13 @@ import { ROUTES } from 'app-constants';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { setCurrentModel } from 'store/currentModel';
 
-import { ReactComponent as PyTorchIcon } from 'assets/images/py-torch.svg';
-
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 import { Checkbox } from '@datarobot/design-system/js/checkbox';
 import { Button } from '@datarobot/design-system/js/button';
 
-import './ModelList.scss';
+import { MODELS } from './constants';
 
-const MODELS = [
-  {
-    bpId: '100',
-    title: 'Conditional Variational Autoencoder',
-    description: 'Convolutional Encoder, Convolutional Decoder',
-    ModelIcon: PyTorchIcon,
-  },
-  {
-    bpId: '101',
-    title: 'Conditional Variational Autoencoder (GRU)',
-    description: 'Convolutional Encoder, GRU Decoder',
-    ModelIcon: PyTorchIcon,
-  }
-];
+import './ModelList.scss';
 
 export default function ModelsList() {
   const dispatch = useAppDispatch();

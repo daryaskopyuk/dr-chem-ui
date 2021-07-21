@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MODELS } from './constants';
+
 import './StartButton.scss';
 
 export default function StartButton({ handleClick, isDisabled, selectedModel }) {
@@ -15,9 +17,9 @@ export default function StartButton({ handleClick, isDisabled, selectedModel }) 
       </span>
       </button>
 
-       <div>
-         <span>Selected model: </span>
-         <span>{selectedModel}</span>
+       <div className="selected-model-info">
+         <span className="small-subtext">Selected model: </span>
+         <span className="bold-caption">{MODELS.find((m) => m.bpId === selectedModel).title}</span>
        </div>
     </div>
 )

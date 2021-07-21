@@ -3,6 +3,10 @@
   align-items: center;
   flex-direction: column;
 
+  .selected-model-info {
+    margin-bottom: 20px;
+  }
+
   .start-button {
     position: relative;
     display: block;
