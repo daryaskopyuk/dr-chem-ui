@@ -7,6 +7,7 @@ import { applicationApi } from 'services/applicationApi';
 
 import currentUser from './currentUser';
 import currentModel from './currentModel';
+import currentApp from './currentApp';
 import locale from './locale';
 
 const store = configureStore({
@@ -16,6 +17,7 @@ const store = configureStore({
     [applicationApi.reducerPath]: applicationApi.reducer,
     currentUser,
     currentModel,
+    currentApp,
     locale,
   },
   // Adding the api middleware enables caching, invalidation, polling,

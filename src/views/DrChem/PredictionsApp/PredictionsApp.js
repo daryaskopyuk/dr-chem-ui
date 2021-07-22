@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import { useSmilesPredictionMutation } from 'services/applicationApi';
+import { useAppSelector } from 'store/store';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 import { Input } from '@datarobot/design-system/js/input';
@@ -13,6 +14,8 @@ import FakeProgressBar from '../FakeProgressBar';
 import './PredictionsApp.scss';
 
 export default function PredictionsApp() {
+  const selectedModel = useAppSelector((state) => state.currentModel);
+
   const [smilesInputs, setSmilesInputs] = useState([{ id: 0, value: ''}]);
   const [moleculesData, setMoleculesData] = useState([]);
   const [addSmilesPredictionMutation, { isLoading, isSuccess, isError }] = useSmilesPredictionMutation();
@@ -50,7 +53,11 @@ export default function PredictionsApp() {
         <div className={classNames("predictions-request-block", {
           loading: isLoading,
         })}>
-          <StartButton handleClick={getPredictions} isDisabled={smilesTruthyValues.length === 0} />
+          <StartButton
+            handleClick={getPredictions}
+            isDisabled={smilesTruthyValues.length === 0}
+            selectedModel={selectedModel}
+          />
 
           <form className="smiles-form">
             {smilesInputs.map((smiles, index) => (

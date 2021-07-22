@@ -5,6 +5,8 @@ import { ROUTES } from 'app-constants';
 
 import { Card } from '@datarobot/design-system/js/card';
 import { Button, ACCENT_TYPES } from '@datarobot/design-system/js/button';
+import { useAppDispatch } from 'store/store';
+import { setCurrentApp } from 'store/currentApp';
 
 import { SimplePageLayout } from 'components/layouts/SimplePageLayout';
 import { ReactComponent as ChemIcon } from 'assets/images/chemistry.svg';
@@ -14,11 +16,13 @@ import { ReactComponent as TargetIcon } from 'assets/images/target.svg';
 import { ReactComponent as AtomIcon } from 'assets/images/atom.svg';
 import { ReactComponent as ChemPlanning } from 'assets/images/chem-planning.svg';
 
+import { DE_NOVO_APP_KEY, PREDICTIONS_APP_KEY } from './constants';
+
 import './DrChem.scss';
 
 const APP_CARDS = [
   {
-    key: 'de-novo',
+    key: DE_NOVO_APP_KEY,
     title: 'De Novo Molecule Design',
     description: 'De Novo App description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi turpis, porta ut eros tincidunt, pulvinar ullamcorper urna.',
     IconComponent: ChemIcon,
@@ -26,11 +30,11 @@ const APP_CARDS = [
     enabled: true,
   },
   {
-    key: 'predictions-app',
+    key: PREDICTIONS_APP_KEY,
     title: 'Chem Predictions App',
     description: 'Chem Predictions App description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nisi turpis, porta ut eros tincidunt, pulvinar ullamcorper urna.',
     IconComponent: ChemIconPredictions,
-    link: ROUTES.CHEM_PREDICTIONS,
+    link: ROUTES.MODELS_LIST,
     enabled: true,
   },
   {
@@ -65,6 +69,12 @@ const APP_CARDS = [
 
 export default function DrChem() {
   const history = useHistory();
+  const dispatch = useAppDispatch();
+
+  const handleAppSelection = (key, link) => {
+    dispatch(setCurrentApp(key))
+    history.push(link)
+  }
 
   return (
     <SimplePageLayout>
@@ -78,9 +88,7 @@ export default function DrChem() {
               <h3 className="view-header">{title}</h3>
               <p className="sub-text">{description}</p>
               {enabled ? (
-                <Button onClick={() => {
-                  history.push(link)
-                }}>
+                <Button onClick={() => handleAppSelection(key, link)}>
                   Explore
                 </Button>
               ) : (
