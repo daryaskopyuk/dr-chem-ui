@@ -12,11 +12,7 @@
     display: flex;
     align-items: flex-start;
 
-    &:first-child {
-      border-top: 1px solid #20262a;
-    }
-
-    &:nth-child(2n) {
+    &:nth-child(odd) {
       background: #20262a;
     }
 
